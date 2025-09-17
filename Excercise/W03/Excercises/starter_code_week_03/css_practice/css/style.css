@@ -1,17 +1,27 @@
 /*------ PART 1 -------------------------*/
 /* 1. Change the background-color for the body to #1695A3*/
-
+body {
+    background-color: #1695A3;
+    color: #FFFFFF; /*color is for the text*/
+   
+}
 
 /* 2. Change the text color for the body to #FFFFFF*/
 
 
 /* 3. Change the text color for the paragraph element to #EB7F00*/
-
+p {
+    color: #EB7F00;
+     /*syntex must be according to the html.
+     check the line*/
+}
 
 
 /*------ PART 2 -------------------------*/
 /*1. Center the h3*/
-
+h3 {
+    text-align: center;
+}
 
 /*2. Change the font-size of the paragraph element to 40px and the font-weight to bold*/
 

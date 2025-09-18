@@ -14,10 +14,16 @@ body {
   font-size: 1em;
   
   min-height: 100vh;
-  background-color: papayawhip;
-
+  background-color: white;
+  
   
 
+}
+
+h1 {
+  font-family: serif;
+  font-size: 2em;
+  font-weight: bold;
 }
 
 main, header, footer {

@@ -4,11 +4,32 @@
   box-sizing: border-box;
 }
 
+.gravitas-one-regular {
+  font-family: "Gravitas One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.kumar-one-outline-regular {
+  font-family: "Kumar One Outline", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.noto-sans {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
 body {
 
   /*height: 100%;*/
-  font-family: "Roboto", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-size: 1em;
+  font-weight: 300;
   /*line-height: 1.5em;*/
   /*min-height: 100vh;*/
   background-color: papayawhip;
@@ -16,29 +37,30 @@ body {
   
   display: block;
   padding: 10px;
+  margin: auto;
 
 }
 
 h1 {
-  font-family: serif;
+  font-family: "Kumar One Outline";
   font-size: 2.5em;
-  font-weight: bold;
+  /*font-weight: bold;*/
   /*line-height: 1.2em;*/
   margin-top: 100px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 h3 {
-  margin: 3px;
-  font-family: serif;
-  font-weight: 300;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
 }
 
 p {
   color: rgb(64, 69, 75);
   margin-top: 15px;
   margin-bottom: 15px;
-  text-align: left;
+  text-align: justify;
+  font-weight: 350;
   /*margin-bottom: 20px;*/ /* Adds 20 pixels of space below each paragraph */
 }
 
@@ -47,10 +69,10 @@ img {
   max-width: 800px;
   height: auto;
   display: block;
-  margin: 15x auto;
+  /*margin: 15x auto;*/
   padding: 15px;
   background-color: white;
-  border: 1px solid black;
+  /*border: 1px solid #646567;*/
   box-sizing: border-box;
   /*object-fit: cover;*/
 }
@@ -62,6 +84,13 @@ figure {
   padding: 20px;
 }
 */
+
+hr {
+  border: none; /* Remove default border */
+  height: 1px; /* Set line thickness */
+  background-color: #646567; /* Set line color */
+  margin-top: 100px 0; /* Add space above and below */
+}
 
 main, header, footer {
   padding: 40px;

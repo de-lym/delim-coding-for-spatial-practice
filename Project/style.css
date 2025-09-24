@@ -25,50 +25,6 @@ body {
 
 }
 
-h1 {
-  font-family: serif;
-  font-size: 2.5em;
-  font-weight: bold;
-  /*line-height: 1.2em;*/
-  margin-top: 100px;
-  margin-bottom: 15px;
-}
-
-h3 {
-  margin: 3px;
-  font-family: serif;
-  font-weight: 300;
-}
-
-p {
-  color: rgb(64, 69, 75);
-  margin-top: 15px;
-  margin-bottom: 15px;
-  text-align: left;
-  /*margin-bottom: 20px;*/ /* Adds 20 pixels of space below each paragraph */
-}
-
-img {
-  width: 100%;
-  max-width: 800px;
-  height: auto;
-  display: block;
-  margin: 15x auto;
-  padding: 15px;
-  background-color: white;
-  border: 1px solid black;
-  box-sizing: border-box;
-  /*object-fit: cover;*/
-}
-
-/*
-figure {
-  border: 20px solid white;
-  outline: 0.5px black;
-  padding: 20px;
-}
-*/
-
 main, header, footer {
   padding: 40px;
   padding-top: 10px;

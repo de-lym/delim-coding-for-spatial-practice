@@ -13,6 +13,9 @@
 
 body {
 
+  height: 100%;
+  min-height: 100vh;
+
   font-family: 'NoonnuBasicGothic';
   font-size: 1em;
   /*line-height: 1.5em;*/

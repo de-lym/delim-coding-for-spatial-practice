@@ -24,6 +24,8 @@
     "wdth" 100;
 }
 
+/* --------------- fonts and essentials ------------------ */
+
 body {
 
   /*height: 100%;*/
@@ -32,7 +34,7 @@ body {
   font-weight: 300;
   /*line-height: 1.5em;*/
   /*min-height: 100vh;*/
-  background-color: papayawhip;
+  background-color: white;
   color: black;
   
   display: block;
@@ -41,9 +43,23 @@ body {
 
 }
 
+.bar a {
+  color: grey;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: gainsboro;
+}
+
 h1 {
-  font-family: "Kumar One Outline";
-  font-size: 2.5em;
+  font-family: "Noto Sans";
+  font-size: 3.5em;
   /*font-weight: bold;*/
   /*line-height: 1.2em;*/
   margin-top: 100px;
@@ -64,40 +80,102 @@ p {
   /*margin-bottom: 20px;*/ /* Adds 20 pixels of space below each paragraph */
 }
 
-img {
-  width: 100%;
-  max-width: 800px;
+.scroll-container {
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 10px;
+  box-sizing: border-box;
+
+}
+
+
+figure {
+
+  display: grid;
+  place-items: center;
+  margin: 60px auto;
+  max-width: 1200px;
+  padding: 0 40px;
+
+}
+
+.scroll-contents {
+
   height: auto;
-  display: block;
-  /*margin: 15x auto;*/
-  padding: 15px;
-  background-color: white;
-  /*border: 1px solid #646567;*/
+  padding: 10px;
+  display: inline-block;
+
+}
+
+img {
+
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 800px;
+  box-shadow: 0 12px 12px rgb(222, 222, 222);
+  border-radius: 25px;
+  margin: 20px;
+
+  /*background-color: white;
+  border: 1px solid #646567;
   box-sizing: border-box;
   /*object-fit: cover;*/
 }
 
-/*
-figure {
-  border: 20px solid white;
-  outline: 0.5px black;
-  padding: 20px;
+.content-grid {
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2em;
+  max-width: 1600px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  justify-content: space-evenly;
+
 }
-*/
+
+.content-item {
+
+  background-color: gainsboro;
+ 
+  border: 1.5px solid gray;
+  border-radius: 12px;
+  margin: 80px auto;
+  padding: 40px
+
+}
+
+.content-item:first-child{
+
+grid-column: 1;
+grid-row: inherit;
+padding: 50px;
+
+}
+
+.content-item:last-child{
+
+grid-column: 2;
+grid-row: inherit;
+padding: 50px;
+
+}
+
+
+/*
 
 hr {
-  border: none; /* Remove default border */
-  height: 1px; /* Set line thickness */
-  background-color: #646567; /* Set line color */
-  margin-top: 100px 0; /* Add space above and below */
-}
+  border: none;  Remove default border 
+  height: 1px;  Set line thickness 
+  background-color: #646567;  Set line color 
+  margin-top: 100px 0;  Add space above and below 
+} 
 
-main, header, footer {
-  padding: 40px;
-  padding-top: 10px;
-  border-style: none; 
-  color: #141414;
-}
+*/
 
 header, footer {
   padding: 50px;

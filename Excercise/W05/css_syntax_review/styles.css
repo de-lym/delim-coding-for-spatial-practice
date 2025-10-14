@@ -1,11 +1,11 @@
+body, html {
+    font-size: 20px;
+}
+
 body {
     background-color: #e2ff59;
     font-family: courier;
-}
-
-.wrapper {
-    margin: 0 auto;
-    max-width: 600px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 h1, h2 {
@@ -33,3 +33,22 @@ h2 {
     - Make heading a different font and a larger font size
     - Make the default font-size 20px
 */
+
+.wrapper {
+    background-color: white;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.entries {
+    background-color: yellowgreen;
+}
+
+.entry {
+    padding: 20px;
+}
+
+.heading h1, h2{
+    /* font-family: 'Times New Roman', Times, serif;
+    font-size: 100px; */
+}

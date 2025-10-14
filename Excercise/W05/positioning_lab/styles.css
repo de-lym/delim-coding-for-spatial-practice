@@ -23,15 +23,36 @@
     }
 
     footer {
-        /* 1. Move the footer to the bottom of the viewport using the fixed property */
-        /* 2. Set the footer to the bottom of the viewport */
-        /* 3. Make sure the footer has a width that is as wide as the viewport */
         background: #141835;
+        /* 1. Move the footer to the bottom of the viewport using the fixed property */
+        position: fixed;
+        /* 2. Set the footer to the bottom of the viewport */
+        bottom: 0;
+        /* 3. Make sure the footer has a width that is as wide as the viewport */
+        width: 100%;
     }
 
     footer a {
         /* 4. Change the default color for the text from blue to #FFFFFF */
+        color: #FFFFFF;
         /* 5. Remove the default underline using the text-decoration property */
+        text-decoration: none;
     }
 
     /* Write the code for the image here */
+    figure {
+        position: relative;
+        width: 50%;
+        margin: auto;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    figcaption {
+        position: absolute;
+        bottom: 15px;
+        right: 10px;
+        color: white;
+    }

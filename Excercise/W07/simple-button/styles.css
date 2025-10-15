@@ -1,0 +1,22 @@
+.button {
+    width: 200px;
+    height: 80px;
+    background-color: red;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    line-height: 80px;
+
+    /* transition */
+    transition-property: background-color;
+    transition-duration: 800s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 300ms;
+
+    /* shortcut of transition */
+    /* transition: background-color 0.3s ease-in-out 0.1s; */
+}
+
+.button:hover {
+    background-color: green;
+}

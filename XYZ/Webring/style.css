@@ -15,9 +15,9 @@ footer {
     height: 60px;
 }
 
-section {
-    /* Optional: grid-row: 2; (implicit) */
-}
+/* section {
+    Optional: grid-row: 2; (implicit)
+} */
 
 footer {
     display: flex;

@@ -1,0 +1,244 @@
+/* ============================================
+    MICRO BRAND KIT - Design System
+    Based on Personal Webcraft Landing Page
+   ============================================ */
+
+/* ============================================
+    1. COLOR PALETTE
+   ============================================ */
+    :root {
+
+    /* Primary Colors */
+    --color-bg: #fafafa;
+    --color-text: #1a1a1a;
+    --color-primary: #2563eb;      /* Blue for links and primary actions */
+    --color-secondary: #64748b;    /* Slate gray for secondary text */
+    --color-accent: #10b981;       /* Green for highlights and success */
+
+    /* Semantic Colors */
+    --color-border: #e5e7eb;
+    --color-hover: #1e40af;
+    --color-muted: #6b7280;
+
+    /*  ============================================
+    2. TYPOGRAPHY
+    ============================================ */
+    /* Font Families */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Courier New', monospace;
+
+    /* Type Scale (1.25 ratio) */
+    --fs-base: 1rem;        /* 16px */
+    --fs-1: 2.441rem;       /* H1 - ~39px */
+    --fs-2: 1.953rem;       /* H2 - ~31px */
+    --fs-3: 1.563rem;       /* H3 - ~25px */
+    --fs-4: 1.25rem;        /* H4 - ~20px */
+    --fs-small: 0.875rem;   /* Small text - 14px */
+
+    /* Line Heights */
+    --lh-tight: 1.2;
+    --lh-normal: 1.5;
+    --lh-loose: 1.8;
+
+    /* Font Weights */
+    --fw-normal: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+
+    /* ============================================
+    3. SPACING SYSTEM (8px base grid)
+     ============================================ */
+     --space-1: 0.5rem;      /* 8px */
+     --space-2: 1rem;        /* 16px */
+     --space-3: 1.5rem;      /* 24px */
+     --space-4: 2rem;        /* 32px */
+     --space-5: 3rem;        /* 48px */
+     --space-6: 4rem;        /* 64px */
+
+    /* ============================================
+    4. LAYOUT & SIZES
+    ============================================ */
+    --border-radius: 4px;
+    --border-radius-lg: 8px;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 350ms ease;
+}
+
+/* ============================================
+   BASE STYLES & RESET
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    line-height: var(--lh-normal);
+
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--space-4);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 0.5fr auto;
+    /* grid-template-rows: auto auto; */
+    gap: var(--space-4);
+    min-height: 100vh;
+}
+
+header,
+footer {
+    height: 60px;
+}
+
+/* ============================================
+   COMPONENT: SECTION
+   ============================================ */
+   section {
+    margin-bottom: var(--space-6);
+  }
+  
+  section:last-child {
+    margin-bottom: 0;
+  }
+    
+/* ============================================
+   TYPOGRAPHY STYLES
+   ============================================ */
+   h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    margin-bottom: var(--space-3);
+    color: var(--color-text);
+  }
+
+  p {
+    margin-bottom: var(--space-3);
+    max-width: var(--content-width);
+  }
+  
+  a {
+    color: var(--color-primary); /* this is dark red*/
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  a:hover {
+    color: var(--color-hover);
+    text-decoration: underline;
+  }
+  
+  a:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+
+
+/* ============================================
+   COMPONENT: COLOR DEMO
+   ============================================ */
+   .color-swatch-red {
+    background: #FAFAFA;
+   }
+
+   .color-swatch-primary{
+    background: #2563eb;
+   }
+
+/* ============================================
+   COMPONENT: BUTTON
+   ============================================ */
+
+   .btn {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-medium);
+    color: white;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-decoration: none;
+   }
+
+   .btn:hover {
+    background-color: var(--color-hover);
+    text-decoration: none;
+  }
+
+  .btn-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-muted);
+  }
+  
+  .btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+  }
+  
+  .btn-outline:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  /* ----------------------------------
+  style for the micro brand kit
+  ------------------------------------- */
+
+/* footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.grid-content:first-child {
+    position: fixed;
+    width: auto;
+    height: auto;
+
+    border: 1px solid blue;
+    padding: 10px 20px;
+    box-shadow: 5px 5px blue;
+    margin: 0 20px;
+}
+
+.grid-content:last-child {
+
+    /* display: flex;
+    gap: 1.5rem;
+    align-items: center; */
+
+
+    border: 1px solid blue;
+    padding: 10px 20px;
+    box-shadow: 5px 5px blue;
+    margin: 0 20px;
+}
+
+.announce-box a:hover {
+    color: #FFFFFF;
+    background: blue;
+    border: 1px solid #FFFFFF;
+}

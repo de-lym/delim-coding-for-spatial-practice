@@ -67,7 +67,7 @@ body {
 
 }
 
-a:link, main a:visited {
+.block-content a:link, main a:visited {
   font-size: 100px;
   background-color: none;
   color: rgb(56, 51, 201);
@@ -79,7 +79,7 @@ a:link, main a:visited {
   text-shadow: 0 12px 12px rgb(215, 215, 215);
 }
 
-a:hover, a:active {
+.block-content a:hover, a:active {
   opacity: 0.3;
 }
 
@@ -211,4 +211,40 @@ main, header, footer {
 
 header, footer {
   padding: 50px;
+}
+
+grid-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+header,
+footer {
+  height: 60px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.webring {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.webring a {
+  border: 1px solid blue;
+  padding: 10px 20px;
+  box-shadow: 5px 5px blue;
+  margin: 0 20px;
+}
+
+.webring a:hover {
+  color: #FFFFFF;
+  background: blue;
+  border: 1px solid #FFFFFF;
 }

@@ -10,23 +10,30 @@
 
     /* Primary Colors */
     --color-bg: #fafafa;
-    --color-text: #1a1a1a;
-    --color-primary: #2563eb;      /* Blue for links and primary actions */
+    --color-text: #131341;
+    --color-primary: #3833c9;      /* Blue for links and primary actions */
     --color-secondary: #64748b;    /* Slate gray for secondary text */
-    --color-accent: #10b981;       /* Green for highlights and success */
+    --color-accent: #59e7bc;       /* Green for highlights and success */
 
     /* Semantic Colors */
     --color-border: #e5e7eb;
-    --color-hover: #1e40af;
-    --color-muted: #6b7280;
+    --color-hover: #8884ff;
+    --color-muted: #9faecb;
 
     /*  ============================================
     2. TYPOGRAPHY
     ============================================ */
+
+    /* Import Font Family */
+   
+    /* font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    font-family: 'SUITE Variable', sans-serif;
+    font-family: 'SUIT Variable', sans-serif; */
+
     /* Font Families */
-    --font-heading: 'Playfair Display', Georgia, serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'Courier New', monospace;
+    --font-heading: 'NoonnuBasicGothic', sans-serif;
+    --font-body: 'SUITE Variable', sans-serif;
+    --font-mono: 'Spoqa Han Sans Neo', sans-serif;
 
     /* Type Scale (1.25 ratio) */
     --fs-base: 1rem;        /* 16px */
@@ -67,6 +74,11 @@
     --transition-fast: 150ms ease;
     --transition-base: 250ms ease;
     --transition-slow: 350ms ease;
+
+    /* Line weight */
+    --line-weight: 1px;
+
+
 }
 
 /* ============================================
@@ -80,6 +92,7 @@
 }
 
 body {
+
     font-family: var(--font-body);
     font-size: var(--fs-base);
     line-height: var(--lh-normal);
@@ -89,14 +102,20 @@ body {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: var(--space-4);
+
+    height: 100%;
+    overflow: hidden
+
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: 0.5fr auto;
+    grid-template-columns: 200px auto;
     /* grid-template-rows: auto auto; */
-    gap: var(--space-4);
-    min-height: 100vh;
+    gap: var(--space-1);
+    height: 100vh;
+
+    /* min-height: 100vh; */
 }
 
 header,
@@ -107,12 +126,24 @@ footer {
 /* ============================================
    COMPONENT: SECTION
    ============================================ */
-   section {
-    margin-bottom: var(--space-6);
+   .box {
+
+    margin-top: var(--space-1);
+    margin-bottom: var(--space-2);
+
+  }
+
+  hr {
+    
+    height: var(--line-weight);
+    margin-top: var(--space-2);
+    /* margin-bottom: var(--space-1); */
+    background-color: var(--color-primary);
+
   }
   
-  section:last-child {
-    margin-bottom: 0;
+  .box:last-child {
+    margin-bottom: var(--space-1);
   }
     
 /* ============================================
@@ -127,7 +158,7 @@ footer {
   }
 
   p {
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-1);
     max-width: var(--content-width);
   }
   
@@ -148,16 +179,45 @@ footer {
   }
 
 
+/* ============================================
+   COMPONENT: TEXT
+   ============================================ */
+
+   .text-body {
+
+    font-size: 1rem;
+
+   }
+
+   .text-small {
+
+    font-size: .875rem;
+
+   }
+
+
 
 /* ============================================
    COMPONENT: COLOR DEMO
    ============================================ */
-   .color-swatch-red {
+   .color-swatch-bg {
     background: #FAFAFA;
    }
 
+   .color-swatch-text{
+    background: #131341;
+   }
+
    .color-swatch-primary{
-    background: #2563eb;
+    background: #3833c9;
+   }
+
+   .color-swatch-secondary{
+    background: #64748b;
+   }
+
+   .color-swatch-accent{
+    background: #59e7bc;
    }
 
 /* ============================================
@@ -203,9 +263,11 @@ footer {
     color: white;
   }
 
-  /* ----------------------------------
-  style for the micro brand kit
-  ------------------------------------- */
+
+
+/* ============================================
+   style for the micro brand kit
+   ============================================ */
 
 /* footer {
     display: flex;
@@ -213,32 +275,103 @@ footer {
     justify-content: center;
 } */
 
-.grid-content:first-child {
+/* LEFT SIDE FIXED */
+.header-box {
+    
     position: fixed;
-    width: auto;
-    height: auto;
 
-    border: 1px solid blue;
-    padding: 10px 20px;
-    box-shadow: 5px 5px blue;
-    margin: 0 20px;
+    /* gap: 1.5rem; */
+
+    width: 200px;
+    /* height: 90vh; */
+
+    /* top: 50%;
+    transform: translateY(-50%);    Vertically centered */
+
+    border: var(--line-weight) solid var(--color-primary);
+    padding: var(--space-1) var(--space-2);
+    box-shadow: 1px 5px var(--color-primary);
+    /* margin: 0 var(--space-2); */
+
+    box-sizing: border-box;
+
+    align-items: center;
+    justify-content: center;
+    /* text-align: center; */
+
 }
 
-.grid-content:last-child {
+/* RIGHT SIDE CONTENTS */
+.content-box {
 
-    /* display: flex;
-    gap: 1.5rem;
-    align-items: center; */
+    grid-column: 2;
 
+    height: 90vh;
+    
+    /* gap: 1.5rem; */
+    /* align-items: center; */
 
-    border: 1px solid blue;
-    padding: 10px 20px;
-    box-shadow: 5px 5px blue;
-    margin: 0 20px;
+    border: var(--line-weight) solid var(--color-primary);
+    padding: var(--space-1) var(--space-2);
+    box-shadow: 5px 5px var(--color-primary);
+    /* margin: 0 var(--space-2); */
+
+    /* Prevent unwanted scroll */
+    overflow-y: auto;
+    overflow-x: auto;
+    box-sizing: border-box;
+
+    align-items: center;
+    justify-content: center;
+
 }
 
-.announce-box a:hover {
-    color: #FFFFFF;
-    background: blue;
-    border: 1px solid #FFFFFF;
+/* Inner grid layout (inside content-box) */
+
+.inner-grid {
+
+    display: grid;
+
+    /* Header + main content */
+    grid-template-rows: auto 1fr;       
+    grid-template-columns: 200px 1fr;
+
+    grid-template-areas:
+        "header header"
+        "sidebar content";
+
+    /* Use 100% to fill parent, not viewport */
+    height: 100%; 
+
+    gap: var(--space-2);
+    column-gap: var(--space-4);
+    
+}
+
+.box-top {
+
+    grid-area: header;
+
+}
+
+.box-side {
+
+    grid-area: sidebar;
+    overflow-y: auto;
+
+}
+
+.box-right {
+    
+    grid-area: content;
+    display: grid;
+    
+    /* Three equal stacked boxes */
+    grid-template-rows: auto auto auto;  
+    gap: var(--space-3);
+
+    /* Fill available vertical space */
+    height: 100%;   
+    overflow-y: auto;                 
+
 }

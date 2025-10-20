@@ -1,0 +1,27 @@
+.color-swatch {
+
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border);
+    margin-right: var(--space-2);
+    margin-bottom: var(--space-2);
+
+}
+
+.color-demo {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+    
+}
+
+.color-label {
+    
+    font-size: var(--fs-small);
+    margin-top: var(--space-1);
+    font-family: var(--font-mono);
+  }

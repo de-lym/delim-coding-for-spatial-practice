@@ -15,6 +15,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kumar+One+Outline&display=swap" rel="stylesheet">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUITE@2/fonts/variable/woff2/SUITE-Variable.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noon-2410@1.0/NoonnuBasicGothicRegular.woff2/NoonnuBasicGothic.css" rel="stylesheet">
+
 
     <!-- Micro Brand Kit -->
     <link rel="stylesheet" href="styleguide.css">
@@ -26,68 +31,125 @@
 <body>
     <div class="grid-container">
 
-        <div class="grid-content">
-                <h1>Micro Brand Kit</h1>
-                <p class="text-muted">A simple design system for personal web projects</p>
+        <div class="header-box">
+            
+                <h1 class="title-text">Micro Brand Kit</h1>
+                <p class="title-body">A simple design system for personal web projects</p>
+        
         </div>
 
-        <div class="grid-content">
+        <div class="content-box">
             
-            <!-- Typography Section -->
-            <section>
-                <h2>Typography</h2>
-                <p>Two carefully paired typefaces: <strong>Playfair Display</strong> for headings and <strong>Inter</strong> for body text.</p>
+            <div class="inner-grid">
+            
+                <!-- Typography Section -->
+                <div class="box-top">
+                    
+                    <h2>Typography</h2>
+                    <p>Two carefully paired typefaces: <strong>Noonnu Basic Gothic</strong> for headings and <strong>SUITE</strong> for body text.</p>
                 
-                <div class="mt-4">
-                    <h1>Heading Level 1 (2.441rem)</h1>
-                    <h2>Heading Level 2 (1.953rem)</h2>
-                    <h3>Heading Level 3 (1.563rem)</h3>
-                    <h4>Heading Level 4 (1.25rem)</h4>
-                    <p>This is body text set in Inter at 1rem (16px). It has a comfortable line height of 1.5 for optimal readability. Body text is perfect for longer passages and content that needs to be easy to read.</p>
-                    <p class="text-small">This is small text at 0.875rem (14px), useful for captions and metadata.</p>
-                    <p><code>This is inline code text in Courier New</code></p>
+                    <hr>
+                
+                </div>    
+                
+                <div class="box-side">
+
+                    <div class="mt-4">
+                        <h1>Heading Level 1 (2.441rem)</h1>
+                        <h2>Heading Level 2 (1.953rem)</h2>
+                        <h3>Heading Level 3 (1.563rem)</h3>
+                        <h4>Heading Level 4 (1.25rem)</h4>
+                        <p class="text-body">This is body text set in SUITE at 1rem (16px). It has a comfortable line height of 1.5 for optimal readability. Body text is perfect for longer passages and content that needs to be easy to read.</p>
+                        <p class="text-small">This is small text at 0.875rem (14px), useful for captions and metadata.</p>
+                        <p><code>This is inline code text in Courier New</code></p>
+                    </div>
+
                 </div>
-            </section>
-            <!-- Color Palette Section -->
-            <section>
-                <h2>Color Palette</h2>
-                <p>This color palette consists of 5 carefully chosen colors that work together to create a cohesive visual identity.</p>
-                <div class="color-demo">
-                    <div class="color-item">
-                        <div class="color-swatch color-swatch-red"></div>
-                        <div class="color-label">
-                        --color-bg<br>
-                        #fafafa
+
+                <!-- Color Palette Section -->
+                <div class="box-right">
+
+                    <div class="box">
+                        <h2>Color Palette</h2>
+                        <p>This color palette consists of 5 carefully chosen colors that work together to create a cohesive visual identity.</p>
+                        <div class="color-demo">
+                            <div class="color-item">
+                                <div class="color-swatch color-swatch-bg"></div>
+                                <div class="color-label">
+                                --color-bg<br>
+                                #fafafa
+                                </div>
+                            </div>
+
+                            <div class="color-item">
+                                <div class="color-swatch color-swatch-text"></div>
+                                <div class="color-label">
+                                --color-text<br>
+                                #131341
+                                </div>
+                            </div>
+
+                            <div class="color-item">
+                                <div class="color-swatch color-swatch-primary"></div>
+                                <div class="color-label">
+                                --color-primary<br>
+                                #3833c9
+                                </div>
+                            </div>
+
+                            <div class="color-item">
+                                <div class="color-swatch color-swatch-secondary"></div>
+                                <div class="color-label">
+                                --color-secondary<br>
+                                #64748b
+                                </div>
+                            </div>
+
+                            <div class="color-item">
+                                <div class="color-swatch color-swatch-accent"></div>
+                                <div class="color-label">
+                                --color-accent<br>
+                                #59e7bc
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="color-item">
-                        <div class="color-swatch color-swatch-primary"></div>
-                        <div class="color-label">
-                        --color-primary<br>
-                        #2563eb
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Spacing System Section -->
-            <section>
-                <h2>Spacing System</h2>
-                <p>Consistent spacing using an 8px base grid creates visual rhythm and harmony.</p>
-            </section>  
-            <!-- Components Section -->
-            <section>
-                <h2>Components</h2>
-                <p>Reusable UI components that maintain consistency across your site.</p>
+                    
+                
+
+                    <!-- Spacing System Section -->
+                    <div class="box">
+
+                        <h2>Spacing System</h2>
+                        <p>Consistent spacing using an 8px base grid creates visual rhythm and harmony.</p>
+                    
+                    </div>  
+
+                    <!-- Components Section -->
+                    <div class="box">
+                        <h2>Components</h2>
+                        <p>Reusable UI components that maintain consistency across your site.</p>
+                        
+                    </div> 
+
                     <!-- Buttons -->
-                <div>
-                    <h3>Buttons</h3>
-                    <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
-                        <button class="btn">Primary Button</button>
-                        <button class="btn btn-secondary">Secondary Button</button>
-                        <button class="btn btn-outline">Outline Button</button>
+                     <div class="box">
+
+                        <h3>Buttons</h3>
+                        <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                            <button class="btn">Primary Button</button>
+                            <button class="btn btn-secondary">Secondary Button</button>
+                            <button class="btn btn-outline">Outline Button</button>
+                        </div>
+
                     </div>
+                    
+                
                 </div>
-            </section>
+
+            </div>
+
         </div>
 
 

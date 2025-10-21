@@ -269,19 +269,24 @@ footer {
 
   .navring {
     display: flex;
+
     gap: var(--space-1);
     align-items: center;
   }
 
   .navring a {
-      border: 1px solid var(--color-accemt);
-      padding: 10px 20px;
-      box-shadow: 5px 5px var(--color-accent);
-      margin: 0 20px;
+      
+    border: 1px solid var(--color-accent);
+    padding: 10px 20px;
+    box-shadow: 5px 5px var(--color-accent);
+    /* margin: 0 20px; */
   }
 
   .navring a:hover {
-      color: var(--color-shadow);
-      background: var(--color-accent);
-      border: 1px solid var(--color-shadow);
+    color: var(--color-accent);
+    background: var(--color-muted);
+    border: 2px solid var(--color-muted);
+
+    opacity: 0.7;
+    text-decoration: none;
   }

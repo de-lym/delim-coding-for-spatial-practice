@@ -1,3 +1,5 @@
+
+/* COLOR */
 .color-swatch {
 
     display: inline-block;
@@ -24,6 +26,131 @@
     font-size: var(--fs-small);
     margin-top: var(--space-1);
     font-family: var(--font-mono);
+
+}
+
+/* BUTTON */
+.button-box {
+    display: flex; 
+    gap: var(--space-2); 
+    flex-wrap: wrap;
+}
+
+/* NAVIGATION */
+.nav-box {
+    display: flex; 
+    gap: var(--space-2); 
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   style for the micro brand kit
+   ============================================ */
+
+/* footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+/* LEFT SIDE FIXED */
+.header-box {
+    
+    position: fixed;
+
+    /* gap: 1.5rem; */
+
+    width: 200px;
+    /* height: 90vh; */
+
+    /* top: 50%;
+    transform: translateY(-50%);    Vertically centered */
+
+    border: var(--line-weight) solid var(--color-primary);
+    padding: var(--space-1) var(--space-2);
+    box-shadow: 1px 5px var(--color-primary);
+    /* margin: 0 var(--space-2); */
+
+    box-sizing: border-box;
+
+    align-items: center;
+    justify-content: center;
+    /* text-align: center; */
+
+}
+
+/* RIGHT SIDE CONTENTS */
+.content-box {
+
+    grid-column: 2;
+
+    height: 90vh;
+    
+    /* gap: 1.5rem; */
+    /* align-items: center; */
+
+    border: var(--line-weight) solid var(--color-primary);
+    padding: var(--space-1) var(--space-2);
+    box-shadow: 5px 5px var(--color-primary);
+    /* margin: 0 var(--space-2); */
+
+    /* Prevent unwanted scroll */
+    overflow-y: auto;
+    overflow-x: auto;
+    box-sizing: border-box;
+
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* Inner grid layout (inside content-box) */
+
+.inner-grid {
+
+    display: grid;
+
+    /* Header + main content */
+    grid-template-rows: auto 1fr;       
+    grid-template-columns: 200px 1fr;
+
+    grid-template-areas:
+        "header header"
+        "sidebar content";
+
+    /* Use 100% to fill parent, not viewport */
+    height: 100%; 
+
+    gap: var(--space-2);
+    column-gap: var(--space-4);
+    
+}
+
+.box-top {
+
+    grid-area: header;
+
+}
+
+.box-side {
+
+    grid-area: sidebar;
+    overflow-y: auto;
+
+}
+
+.box-right {
+    
+    grid-area: content;
+    display: grid;
+    
+    /* Three equal stacked boxes */
+    grid-template-rows: auto auto auto;  
+    gap: var(--space-3);
+
+    /* Fill available vertical space */
+    height: 100%;   
+    overflow-y: auto;                 
 
 }
 

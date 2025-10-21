@@ -126,7 +126,7 @@ footer {
 /* ============================================
    COMPONENT: SECTION
    ============================================ */
-   .box {
+  .box {
 
     margin-top: var(--space-1);
     margin-bottom: var(--space-2);
@@ -263,115 +263,25 @@ footer {
     color: white;
   }
 
-
-
 /* ============================================
-   style for the micro brand kit
+   COMPONENT: NAVIGATION
    ============================================ */
 
-/* footer {
+  .navring {
     display: flex;
+    gap: var(--space-1);
     align-items: center;
-    justify-content: center;
-} */
+  }
 
-/* LEFT SIDE FIXED */
-.header-box {
-    
-    position: fixed;
+  .navring a {
+      border: 1px solid var(--color-accemt);
+      padding: 10px 20px;
+      box-shadow: 5px 5px var(--color-accent);
+      margin: 0 20px;
+  }
 
-    /* gap: 1.5rem; */
-
-    width: 200px;
-    /* height: 90vh; */
-
-    /* top: 50%;
-    transform: translateY(-50%);    Vertically centered */
-
-    border: var(--line-weight) solid var(--color-primary);
-    padding: var(--space-1) var(--space-2);
-    box-shadow: 1px 5px var(--color-primary);
-    /* margin: 0 var(--space-2); */
-
-    box-sizing: border-box;
-
-    align-items: center;
-    justify-content: center;
-    /* text-align: center; */
-
-}
-
-/* RIGHT SIDE CONTENTS */
-.content-box {
-
-    grid-column: 2;
-
-    height: 90vh;
-    
-    /* gap: 1.5rem; */
-    /* align-items: center; */
-
-    border: var(--line-weight) solid var(--color-primary);
-    padding: var(--space-1) var(--space-2);
-    box-shadow: 5px 5px var(--color-primary);
-    /* margin: 0 var(--space-2); */
-
-    /* Prevent unwanted scroll */
-    overflow-y: auto;
-    overflow-x: auto;
-    box-sizing: border-box;
-
-    align-items: center;
-    justify-content: center;
-
-}
-
-/* Inner grid layout (inside content-box) */
-
-.inner-grid {
-
-    display: grid;
-
-    /* Header + main content */
-    grid-template-rows: auto 1fr;       
-    grid-template-columns: 200px 1fr;
-
-    grid-template-areas:
-        "header header"
-        "sidebar content";
-
-    /* Use 100% to fill parent, not viewport */
-    height: 100%; 
-
-    gap: var(--space-2);
-    column-gap: var(--space-4);
-    
-}
-
-.box-top {
-
-    grid-area: header;
-
-}
-
-.box-side {
-
-    grid-area: sidebar;
-    overflow-y: auto;
-
-}
-
-.box-right {
-    
-    grid-area: content;
-    display: grid;
-    
-    /* Three equal stacked boxes */
-    grid-template-rows: auto auto auto;  
-    gap: var(--space-3);
-
-    /* Fill available vertical space */
-    height: 100%;   
-    overflow-y: auto;                 
-
-}
+  .navring a:hover {
+      color: var(--color-shadow);
+      background: var(--color-accent);
+      border: 1px solid var(--color-shadow);
+  }

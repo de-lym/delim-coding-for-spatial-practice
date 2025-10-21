@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================================
+    1. COLOR PALETTE
+   ============================================ */
+:root {
+
+    /* Primary Colors */
+    --color-bg: #fafafa;
+    --color-text: #131341;
+    --color-primary: #3833c9;      /* Blue for links and primary actions */
+    --color-secondary: #64748b;    /* Slate gray for secondary text */
+    --color-accent: #59e7bc;       /* Green for highlights and success */
+
+    /* Semantic Colors */
+    --color-border: #e5e7eb;
+    --color-hover: #8884ff;
+    --color-muted: #9faecb;
+
+    /*  ============================================
+    2. TYPOGRAPHY
+    ============================================ */
+
+    /* Import Font Family */
+   
+    /* font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    font-family: 'SUITE Variable', sans-serif;
+    font-family: 'SUIT Variable', sans-serif; */
+
+    /* Font Families */
+    --font-heading: 'NoonnuBasicGothic', sans-serif;
+    --font-body: 'SUITE Variable', sans-serif;
+    --font-mono: 'Spoqa Han Sans Neo', sans-serif;
+
+    /* Type Scale (1.25 ratio) */
+    --fs-base: 1rem;        /* 16px */
+    --fs-1: 2.441rem;       /* H1 - ~39px */
+    --fs-2: 1.953rem;       /* H2 - ~31px */
+    --fs-3: 1.563rem;       /* H3 - ~25px */
+    --fs-4: 1.25rem;        /* H4 - ~20px */
+    --fs-small: 0.875rem;   /* Small text - 14px */
+
+    /* Line Heights */
+    --lh-tight: 1.2;
+    --lh-normal: 1.5;
+    --lh-loose: 1.8;
+
+    /* Font Weights */
+    --fw-normal: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+
+    /* ============================================
+    3. SPACING SYSTEM (8px base grid)
+     ============================================ */
+     --space-1: 0.5rem;      /* 8px */
+     --space-2: 1rem;        /* 16px */
+     --space-3: 1.5rem;      /* 24px */
+     --space-4: 2rem;        /* 32px */
+     --space-5: 3rem;        /* 48px */
+     --space-6: 4rem;        /* 64px */
+
+    /* ============================================
+    4. LAYOUT & SIZES
+    ============================================ */
+    --border-radius: 4px;
+    --border-radius-lg: 8px;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 350ms ease;
+
+    /* Line weight */
+    --line-weight: 1px;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    margin-bottom: var(--space-3);
+    color: var(--color-text);
+}
+
+p {
+    margin-bottom: var(--space-1);
+    max-width: var(--content-width);
+}
+
+/* General styles */
+body {
+    background-color: var(--color-bg);
+    font-family:'SUITE Variable', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Container to hold cards */
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--color-primary);
+}
+
+/* Scrollable cards */
+.catalog {
+  position: absolute;
+  
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 1s ease, transform 1s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Card when in view */
+.catalog.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* Style card */
+.card {
+  width: clamp(50vh, 40vw, 80vh);
+  aspect-ratio: 4 / 2.6;
+  background-color: var(--color-bg);
+
+  border: var(--line-weight) solid var(--color-accent);
+  border-radius: 10px;
+  padding: var(--space-1) var(--space-2);
+  box-shadow: 3px 5px var(--color-accent);
+
+
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  text-align: center;
+  position: relative;
+}
+
+/* Screen area */
+.screen {
+  color: var(--color-text);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  line-height: 2rem;
+
+  margin-bottom: 50px;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-medium);
+    color: white;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: var(--color-hover);
+    text-decoration: none;
+}
+
+/* Text styles */
+.title {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-2);
+}
+
+.content {
+  font-size: var(--fs-base);
+}
+
+/* Gallery */
+h1 {
+  margin-bottom: 20px;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-2);
+}
+
+/* .title {
+
+    display:
+} */
+
+.gallery {
+  
+  width: 100vh;
+  background-color: var(--color-bg);
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 2rem auto;
+  margin: 1rem auto;
+
+  border: var(--line-weight) solid var(--color-primary);
+  border-radius: 10px;
+  padding: var(--space-1) var(--space-2);
+  box-shadow: 3px 5px var(--color-primary);
+
+  box-sizing: border-box;
+
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  gap: 2rem;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .caption {
+  opacity: 1;
+}

@@ -20,8 +20,10 @@
 }
 
 .color-label {
-    
+
     font-size: var(--fs-small);
     margin-top: var(--space-1);
     font-family: var(--font-mono);
-  }
+
+}
+

@@ -2,64 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Interactive Calatog · Detective Media</title>
-  
-  <!-- Import Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUITE@2/fonts/variable/woff2/SUITE-Variable.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noon-2410@1.0/NoonnuBasicGothicRegular.woff2/NoonnuBasicGothic.css" rel="stylesheet">
-
-    <!-- CSS File -->
-    <link rel="stylesheet" href="../style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sticker Board</title>
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
+  <div class="board">
 
-    <!-- <div class="title">
+    <!-- STICKER BOARAD -->
+    <div class="stickerboard">
+        <div class="sticker" data-label="FulFru">
+        <img src="./fulfru.png" alt="FulFru" data-related="./fulfru.jpg">
+        </div>
+        <div class="sticker" data-label="Cleverfruits">
+        <img src="./cleverfruits.png" alt="Cleverfruits" data-related="./cleverfruits.jpg">
+        </div>
+        <div class="sticker" data-label="HelloKitty">
+        <img src="./hellokitty.png" alt="HelloKitty" data-related="./hellokitty.jpg">
+        </div>
+        <div class="sticker" data-label="LumineIkebukuro">
+        <img src="./lumineikebukuro.png" alt="LumineIkebukuro" data-related="./lumineikebukuro.jpg">
+        </div>
+        <div class="sticker" data-label="NaomiWatanabe">
+        <img src="./naomiwatanabe.png" alt="NaomiWatanabe" data-related="./naomiwatanabe.jpg">
+        </div>
+        <div class="sticker" data-label="PlayingCards">
+        <img src="./playingcards.png" alt="PlayingCards" data-related="./playingcards.jpg">
+        </div>
+        <div class="sticker" data-label="YellowVoyage">
+        <img src="./yellowvoyage.png" alt="YellowVoyage" data-related="./yellowvoyage.jpg">
+        </div>
+    </div>
 
-        <h1>Interactive Calatog · Detective Media</h1>
+    <!-- POP-UP BOART -->
+    <div class="popboard" id="popboard">
+        <img id="popupImage" src="" alt="">
+    </div>
 
-    </div> -->
-
-  <div class="gallery">
-
-    <div class="gallery-item">
-      <img src="./01.jpg" alt="Yoshida Yuni" />
-      <div class="caption">Yoshida Yuni</div>
-    </div>
-    <div class="gallery-item">
-      <img src="./02.jpg" alt="Yoshida Yuni" />
-      <div class="caption">Yoshida Yuni</div>
-    </div>
-    <div class="gallery-item">
-      <img src="./02.jpg" alt="Yoshida Yuni" />
-      <div class="caption">Yoshida Yuni</div>
-    </div>
-    <div class="gallery-item">
-      <img src="./03.jpg" alt="Yoshida Yuni" />
-      <div class="caption">Yoshida Yuni</div>
-    </div>
-    <div class="gallery-item">
-      <img src="./05.png" alt="Yoshida Yuni" />
-      <div class="caption">Yoshida Yuni</div>
-    </div>
-    <div class="gallery-item">
-      <img src="./06.jpg" alt="Yoshida Yuni" />
-      <div class="caption">Yoshida Yuni</div>
-    </div>
-    <div class="gallery-item">
-      <img src="./07.jpg" alt="Yoshida Yuni" />
-      <div class="caption">Yoshida Yuni</div>
-    </div>
-    <div class="gallery-item">
-      <img src="./08.jpg" alt="Yoshida Yuni" />
-      <div class="caption">Yoshida Yuni</div>
-    </div>
+    <!-- LABELING -->
+    <div class="labeltag" id="labeltag"></div>
   </div>
 
+  <script src="../sticker.js"></script>
 </body>
 </html>

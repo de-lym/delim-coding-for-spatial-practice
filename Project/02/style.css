@@ -218,27 +218,36 @@ h1 {
 } */
 
 .gallery {
-  
-  width: 100vh;
-  background-color: var(--color-bg);
-
   display: grid;
-  justify-content: center;
-  align-items: center;
 
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
   padding: 2rem auto;
   margin: 1rem auto;
 
-  border: var(--line-weight) solid var(--color-primary);
-  border-radius: 10px;
-  padding: var(--space-1) var(--space-2);
-  box-shadow: 3px 5px var(--color-primary);
-
   box-sizing: border-box;
 
+  position: relative;
+  width: 90vw;          /* fills 90% of viewport width */
+  aspect-ratio: 16 / 9; /* keeps 16:9 ratio */
+  max-width: 1200px;    /* optional max size */
+  margin: 0 auto;       /* centers the board horizontally */
+  background: var(--color-bg);  /* optional background */
+
+  border: var(--line-weight) solid var(--color-accent);
+  padding: var(--space-1) var(--space-2);
+  box-shadow: 5px 5px var(--color-accent);
+
+  min-width: 300px;
+  min-height: 200px;
+
+  overflow: hidden; 
 }
+
+.gallery.dimmed {
+    opacity: 0.3;
+    pointer-events: none;
+  }
 
 .gallery-item {
   position: relative;
@@ -306,11 +315,6 @@ h1 {
   overflow: hidden;     /* keeps stickers inside */
 }
 
-.stickerboard.dimmed {
-    opacity: 0.3;
-    pointer-events: none;
-  }
-
 /* Sticker placement */
 .sticker {
   position: absolute;
@@ -355,48 +359,50 @@ h1 {
   transform: translateY(0);
 }
 
+/* blur the gallery */
+.gallery.blurred {
+  filter: blur(6px);
+}
+
+/* blur the gallery */
+.stickerboard.blurred {
+  filter: blur(6px);
+}
+
 /* FULL SCREEN POP-UP */
-.popboard {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: none;
-    align-items: center;
-    justify-content: center;
+#popboard {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--color-primary, 0.6); /* dim effect */
+  justify-content: center;
+  align-items: center;
+}
 
-    background: var(--color-accent), 0.5;
+#popboard.active {
+  display: flex;
+}
 
-    backdrop-filter: blur(6px);
-    z-index: 100;
-    animation: fadeIn 0.4s forwards;
-  }
+.popboard img {
+  max-width: 90vw;
+  max-height: 90vh;
 
-  .popboard.active {
-    display: flex;
-  }
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+  animation: popIn 0.4s forwards;
+}
 
-  .popboard img {
-    max-width: 90vw;
-    max-height: 90vh;
+/* ANIMATION */
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
-    box-shadow: 0 0 30px rgba(0,0,0,0.4);
-    animation: popIn 0.4s forwards;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-  /* ANIMATION */
-  @keyframes popIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-  }
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

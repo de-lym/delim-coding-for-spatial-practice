@@ -56,14 +56,14 @@ function setupStickerClicks() {
       const imageSrc = sticker.dataset.related;  // Each sticker's unique related image
       popupImage.src = imageSrc;
       popboard.classList.add('active');
-      stickerboard.classList.add('dimmed');
+      stickerboard.classList.remove('blurred');
     });
   });
 
   // Hide popup when clicking anywhere on the overlay
   popboard.addEventListener('click', () => {
     popboard.classList.remove('active');
-    stickerboard.classList.remove('dimmed');
+    stickerboard.classList.remove('blurred');
     popupImage.src = '';
   });
 }

@@ -2,56 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Interactive Calatog · Detective Media</title>
-  
-  <!-- Import Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUITE@2/fonts/variable/woff2/SUITE-Variable.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noon-2410@1.0/NoonnuBasicGothicRegular.woff2/NoonnuBasicGothic.css" rel="stylesheet">
-
-    <!-- CSS File -->
-    <link rel="stylesheet" href="../style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Calatog · Detective</title>
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
+  <div class="board">
 
-    <!-- <div class="title">
+    <!-- STICKER BOARAD -->
+    <div class="stickerboard">
+        <div class="sticker" data-label="KnivesOut">
+        <img src="./knivesout.png" alt="KnivesOut" data-related="./knivesout.jpg">
+        </div>
+        <div class="sticker" data-label="Marcella">
+        <img src="./marcella.png" alt="Marcella" data-related="./marcella.jpg">
+        </div>
+        <div class="sticker" data-label="Pockerface">
+        <img src="./pockerface.png" alt="Pockerface" data-related="./pockerface.jpg">
+        </div>
+        <div class="sticker" data-label="Poirot">
+        <img src="./poirot.png" alt="Poirot" data-related="./poirot.jpg">
+        </div>
+        <div class="sticker" data-label="TheGoodDetective">
+        <img src="./thegooddetective.png" alt="TheGoodDetective" data-related="./thegooddetective.jpg">
+        </div>
+        <div class="sticker" data-label="TheResidence">
+        <img src="./theresidence.png" alt="TheResidence" data-related="./theresidence.jpg">
+        </div>
+        <!-- <div class="sticker" data-label="YellowVoyage">
+        <img src="./yellowvoyage.png" alt="YellowVoyage" data-related="./yellowvoyage.jpg">
+        </div> -->
+    </div>
 
-        <h1>Interactive Calatog · Detective Media</h1>
+    <!-- POP-UP BOART -->
+    <div class="popboard" id="popboard">
+        <img id="popupImage" src="" alt="">
+    </div>
 
-    </div> -->
-
-  <div class="gallery">
-
-    <div class="gallery-item">
-      <img src="./knivesout.jpg" alt="knivesout" />
-      <div class="caption">Knives Out</div>
-    </div>
-    <div class="gallery-item">
-      <img src="./marcella.jpg" alt="marcella" />
-      <div class="caption">Marcella</div>
-    </div>
-    <div class="gallery-item">
-      <img src="./pokerface.jpg" alt="pokerface" />
-      <div class="caption">Poker Face</div>
-    </div>
-    <div class="gallery-item">
-      <img src="./thegooddetective.jpg" alt="thegooddetective" />
-      <div class="caption">The Good Detective</div>
-    </div>
-    <div class="gallery-item">
-      <img src="./theresidence.jpg" alt="theresidence" />
-      <div class="caption">The Residence</div>
-    </div>
-    <div class="gallery-item">
-      <img src="./thesiner.jpg" alt="thesiner" />
-      <div class="caption">The Siner</div>
-    </div>
+    <!-- LABELING -->
+    <div class="labeltag" id="labeltag"></div>
   </div>
 
+  <script src="../sticker.js"></script>
 </body>
 </html>

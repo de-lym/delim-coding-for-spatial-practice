@@ -406,3 +406,33 @@ h1 {
   from { opacity: 1; }
   to { opacity: 0; }
 }
+
+footer {
+  height: 1px;
+  padding: 10px;
+
+  border-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.webring {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.webring a {
+  border: 1px solid var(--color-accent);
+  padding: 10px 20px;
+  box-shadow: 5px 5px var(--color-accent);
+  margin: 0 10px;
+  background-color: var(--color-bg);
+}
+
+.webring a:hover {
+  color: var(--color-bg);
+  background: var(--color-accent);
+  border: 1px solid var(--color-bg);
+}

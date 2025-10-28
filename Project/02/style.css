@@ -217,6 +217,7 @@ h1 {
     display:
 } */
 
+/* GALLERY */
 .gallery {
   display: grid;
 
@@ -288,6 +289,7 @@ h1 {
   opacity: 1;
 }
 
+/* STICKER BOARD */
 .board{
   height: 100vh;
   display: flex;
@@ -336,6 +338,11 @@ h1 {
   filter: drop-shadow(0 6px 8px #4b4f5540);
 }
 
+.stickerboard.dimmed {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 /* LABELING */
 .labeltag {
   position: absolute;
@@ -359,24 +366,17 @@ h1 {
   transform: translateY(0);
 }
 
-/* blur the gallery */
-.gallery.blurred {
-  filter: blur(6px);
-}
-
-/* blur the gallery */
-.stickerboard.blurred {
-  filter: blur(6px);
-}
-
 /* FULL SCREEN POP-UP */
 #popboard {
   display: none;
   position: fixed;
   inset: 0;
-  background: var(--color-primary, 0.6); /* dim effect */
+  background: var(--color-primary), 0.3; /* dim effect */
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  animation: fadeIn 0.4s forwards;
 }
 
 #popboard.active {

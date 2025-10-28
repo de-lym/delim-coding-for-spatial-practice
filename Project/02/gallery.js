@@ -14,14 +14,14 @@ function setupGalleryClicks() {
       const imageSrc = item.src;  // Each sticker's unique related image
       popupImage.src = imageSrc;
       popboard.classList.add('active');
-      gallery.classList.remove('blurred');
+      gallery.classList.remove('dimmed');
     });
   });
 
   // Hide popup when clicking anywhere on the overlay
   popboard.addEventListener('click', () => {
     popboard.classList.remove('active');
-    gallery.classList.remove('blurred');
+    gallery.classList.remove('dimmed');
     popupImage.src = '';
   });
 }

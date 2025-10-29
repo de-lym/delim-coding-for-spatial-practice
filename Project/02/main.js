@@ -5,7 +5,7 @@ const buttons = document.querySelectorAll(".btn");
 buttons.forEach((button, index) => {
   button.addEventListener("click", function() {
     if (index === 0) {
-        window.location.href = "./haeckel/haeckel-board.html";
+        window.location.href = "./haeckel-board.html";
     } else if (index === 1) {
         window.location.href = "./webb/webb.html";
     } else if (index === 2) {

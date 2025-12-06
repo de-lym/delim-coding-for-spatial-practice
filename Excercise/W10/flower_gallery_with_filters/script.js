@@ -101,6 +101,26 @@ renderFlowersToPage(flowers);
     filterBtns.addEventListener("click", filterFn);
 */
 
+function filterFn(e) {
+  console.log(e.target);
+  if (e.target.classList.contains("filter-btn)")) {
+    // remove active class from current button
+    filterBtns.querySelector(".active").classList.remove("active");
+    // add to the clicked one
+    e.target.classList.add("active");
+
+    const filterValue = e.target.getAttribute("data-filter");
+
+    for (let i = 0; i < cards.length; i++) {
+      const card = cards[i];
+
+      console.log(card.classList.contains(filterValue))
+    }
+  }
+}
+
+filterBtns.addEventsListener("click", filterFn);
+
 // Step 8. Test the filters by clicking the buttons!
 
 /*

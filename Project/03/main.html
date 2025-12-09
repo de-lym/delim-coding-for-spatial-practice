@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Technology Archive</title>
+    <link rel="stylesheet" href="style.css">
+
+     <!-- Fonts for Retro Tech Theme -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- 1. ENTRANCE -->
+    <section id="view-entrance" class="view active">
+        <div id="entrance-words-container"></div>
+        <div class="entrance-title">
+            <h1>Lost Tech<br>Archive</h1>
+            <span class="subtitle">20TH CENTURY HERITAGE</span>
+        </div>
+        <button id="enter-btn">
+            INITIALIZE
+        </button>
+    </section>
+
+    <!-- 2. MAIN INTERFACE -->
+    <section id="view-main" class="view">
+        <div class="top-bar">
+            <button id="btn-collection">
+                <span>+</span>
+            </button>
+        </div>
+
+        <div class="container">
+            
+            <div class="search-bar">
+                <div id="word-field"></div>
+
+                <div id="drop-zone-wrapper">
+                    <div id="drop-zone" class="drop-zone">
+                        <input id="search-input" type="text" placeholder="Search Archive..." autocomplete="off">
+                    </div>
+                    <div class="instruction">DRAG OR TYPE TO INITIATE</div>
+                </div>
+            </div>
+
+            <div id="words-container">
+                <div class="word" draggable="true">VHS TAPE</div>
+                <div class="word" draggable="true">PAGER</div>
+                <div class="word" draggable="true">POLAROID</div>
+                <div class="word" draggable="true">CASSETTE</div>
+                <div class="word" draggable="true">BOOMBOX</div>
+                <div class="word" draggable="true">NINTENDO64</div>
+                <div class="word" draggable="true">FLOPPY_DISK</div>
+                <div class="word" draggable="true">TAMAGOTCHI</div>
+                <div class="word" draggable="true">GAMEBOY</div>
+                <div class="word" draggable="true">CRT_MONITOR</div>
+                <div class="word" draggable="true">MINIDISC</div>
+                <div class="word" draggable="true">ATARI</div>
+                <div class="word" draggable="true">WALKMAN</div>
+                <div class="word" draggable="true">DIAL_UP</div>
+                <div class="word" draggable="true">TYPEWRITER</div>
+                <div class="word" draggable="true">FAX_MACHINE</div>
+                <div class="word" draggable="true">BETAMAX</div>
+                <div class="word" draggable="true">LASERDISC</div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 3. RESULTS PAGE -->
+    <section id="view-results" class="view">
+        <div class="results-header">
+            <button id="btn-back" class="back-btn">← Back</button>
+            <h2 id="result-title"></h2>
+        </div>
+
+        <div class="results-container">
+            <div class="results-left">
+                <h3>INFORMATION</h3>
+                <p id="result-description"></p>
+                <div id="result-details"></div>
+            </div>
+
+            <div class="results-right">
+                <h3>IMAGES</h3>
+                <div id="images-grid" class="images-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ERROR MODAL -->
+    <div id="error-modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="error-message"></p>
+            <button id="error-close" class="modal-btn">OK</button>
+        </div>
+    </div>
+    
+    <script src="system.js"></script>
+</body>
+</html>

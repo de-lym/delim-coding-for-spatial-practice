@@ -374,6 +374,7 @@ async function performSearch(query) {
     const normalized = query.toUpperCase();
     if (!searchData[normalized]) {
         showError('Sorry we cannot find relative information in our database.');
+        if (searchInput) searchInput.value = ''; // clear on error
         return;
     }
 
@@ -393,6 +394,8 @@ async function performSearch(query) {
     viewMain.classList.remove('active');
     viewArchive.classList.remove('active');
     viewResults.classList.add('active');
+
+    if (searchInput) searchInput.value = ''; // clear after successful search
 
     const apiQuery = data.searchTerm || normalized;
     const apiImages = await fetchImagesFromWikimedia(apiQuery, 12);

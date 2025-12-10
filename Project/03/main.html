@@ -5,44 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lost Technology Archive</title>
     <link rel="stylesheet" href="style.css">
-
-     <!-- Fonts for Retro Tech Theme -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- 1. ENTRANCE -->
-    <section id="view-entrance" class="view active">
-        <div id="entrance-words-container"></div>
-        <div class="entrance-title">
-            <h1>Lost Tech<br>Archive</h1>
+    <!-- MAIN VIEW -->
+    <section id="view-main" class="view active">
+        <div class="title">
+            <h1>Lost Technology<br>Archive</h1>
             <span class="subtitle">20TH CENTURY HERITAGE</span>
-        </div>
-        <button id="enter-btn">
-            INITIALIZE
-        </button>
-    </section>
-
-    <!-- 2. MAIN INTERFACE -->
-    <section id="view-main" class="view">
-        <div class="top-bar">
-            <button id="btn-collection">
-                <span>+</span>
-            </button>
         </div>
 
         <div class="container">
-            
             <div class="search-bar">
                 <div id="word-field"></div>
-
                 <div id="drop-zone-wrapper">
                     <div id="drop-zone" class="drop-zone">
                         <input id="search-input" type="text" placeholder="Search Archive..." autocomplete="off">
                     </div>
-                    <div class="instruction">DRAG OR TYPE TO INITIATE</div>
+                    <div class="instruction">DRAG AND DROP OR TYPE HERE</div>
                 </div>
             </div>
 
@@ -66,11 +49,15 @@
                 <div class="word" draggable="true">BETAMAX</div>
                 <div class="word" draggable="true">LASERDISC</div>
             </div>
-            
         </div>
+
+        <!-- Archive button for main view -->
+        <button id="btn-collection" class="archive-btn">
+            <span>+</span>
+        </button>
     </section>
 
-    <!-- 3. RESULTS PAGE -->
+    <!-- RESULTS VIEW -->
     <section id="view-results" class="view">
         <div class="results-header">
             <button id="btn-back" class="back-btn">← Back</button>
@@ -89,16 +76,43 @@
                 <div id="images-grid" class="images-grid"></div>
             </div>
         </div>
+
+        <button id="btn-collection-results" class="archive-btn"><span>+</span></button>
+    </section>
+
+    <!-- ARCHIVE VIEW -->
+    <section id="view-archive" class="view">
+        <div class="archive-header">
+            <button id="btn-back-archive" class="back-btn">← Back</button>
+            <h2>MEMORY ARCHIVE</h2>
+        </div>
+
+        <!-- TIMER: placed inside archive section only -->
+        <div id="timer-display">02:00</div>
+
+        <div class="archive-container">
+            <div id="archive-content" class="archive-content">
+                <p>Find your memories from database.</p>
+            </div>
+        </div>
     </section>
 
     <!-- ERROR MODAL -->
     <div id="error-modal" class="modal hidden">
         <div class="modal-content">
             <p id="error-message"></p>
-            <button id="error-close" class="modal-btn">OK</button>
+            <button id="error-close" class="modal-btn">RETURN</button>
         </div>
     </div>
-    
+
+    <!-- SUCCESS MODAL -->
+    <div id="success-modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="success-message">✓ Image saved to your memory</p>
+            <button id="success-close" class="modal-btn">OK</button>
+        </div>
+    </div>
+
     <script src="system.js"></script>
 </body>
 </html>

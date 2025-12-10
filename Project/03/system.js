@@ -1,500 +1,546 @@
-const enterBtn = document.getElementById('enter-btn');
-const viewEntrance = document.getElementById('view-entrance');
 const viewMain = document.getElementById('view-main');
 const viewResults = document.getElementById('view-results');
+const viewArchive = document.getElementById('view-archive');
 const searchInput = document.getElementById('search-input');
 const dropZone = document.getElementById('drop-zone');
-const wordsContainer = document.getElementById('words-container');
 const words = document.querySelectorAll('.word');
 const container = document.querySelector('.container');
 const errorModal = document.getElementById('error-modal');
 const errorMessage = document.getElementById('error-message');
 const errorClose = document.getElementById('error-close');
 const backBtn = document.getElementById('btn-back');
+const backBtnArchive = document.getElementById('btn-back-archive');
 const btnCollection = document.getElementById('btn-collection');
+const btnCollectionResults = document.getElementById('btn-collection-results');
+const successModal = document.getElementById('success-modal');
+const successClose = document.getElementById('success-close');
 
+// ===== DATA =====
 const searchData = {
     'VHS TAPE': {
-        description: 'VHS (Video Home System) tapes were the dominant format for recording and playing back video content from the 1980s through early 2000s. They revolutionized how people consumed movies and recorded personal moments at home.',
+        description: 'VHS (Video Home System) tapes were the dominant format for recording and playing back video content from the 1980s through early 2000s.',
         details: 'Format: Analog video\nResolution: 480i (NTSC)\nCapacity: 120-240 minutes\nRelease: 1976',
-        images: [
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1595432707802-6b2626ef1c91?w=300',
-            'https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1494787899049-e36ff8d13a9e?w=300',
-            'https://images.unsplash.com/photo-1595432707802-6b2626ef1c91?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1613323593607-ee5899a681a1?w=300'
-        ]
+        searchTerm: 'VHS tape'
     },
     'PAGER': {
-        description: 'Pagers were wireless telecommunications devices that received text messages and alerts. They were essential for professionals, emergency responders, and businesses before the mobile phone era.',
-        details: 'Type: One-way receiver\nRange: Wide coverage area\nBattery: 24-48 hours\nPeak usage: 1990s',
-        images: [
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=300',
-            'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300'
-        ]
+        description: 'Pagers were wireless telecommunications devices that received text messages and alerts.',
+        details: 'Type: One-way receiver\nPeak usage: 1990s',
+        searchTerm: 'pager'
     },
     'POLAROID': {
-        description: 'Polaroid cameras produced instant photographs without requiring darkroom development. They became iconic for creating physical memories on the spot.',
-        details: 'Film type: Instant\nDevelop time: 1-2 minutes\nFormat: Square prints\nLaunched: 1948',
-        images: [
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300'
-        ]
+        description: 'Polaroid cameras produced instant photographs without requiring darkroom development.',
+        details: 'Film type: Instant\nDevelop time: 1-2 minutes\nLaunched: 1948',
+        searchTerm: 'Polaroid camera'
     },
     'CASSETTE': {
-        description: 'Cassette tapes were the primary medium for music and audio recording from the 1970s to 2000s. They offered portability and ease of use for both music listening and recording.',
-        details: 'Format: Magnetic tape\nDuration: 30-90 minutes\nAudio quality: Analog\nStandard: Compact cassette',
-        images: [
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300'
-        ]
+        description: 'Cassette tapes were the primary medium for music and audio recording from the 1970s to 2000s.',
+        details: 'Format: Magnetic tape\nDuration: 30-90 minutes',
+        searchTerm: 'cassette tape'
     },
     'BOOMBOX': {
-        description: 'Boomboxes were portable stereo systems that played cassettes, radio, and later CDs. They became cultural icons for street music and hip-hop culture.',
-        details: 'Audio source: Multi-format\nPower: Battery/AC adapter\nFeature: Portable stereo\nEra: 1980s-1990s',
-        images: [
-            'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300',
-            'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=300',
-            'https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=300',
-            'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=300',
-            'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300',
-            'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=300',
-            'https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300'
-        ]
+        description: 'Boomboxes were portable stereo systems that played cassettes and radio.',
+        details: 'Era: 1980s-1990s',
+        searchTerm: 'boombox'
     },
     'NINTENDO64': {
-        description: 'The Nintendo 64 was a revolutionary 64-bit gaming console that brought 3D gaming into homes. It featured iconic games and introduced analog stick controls.',
-        details: 'Generation: 5th\nProcessor: 64-bit MIPS\nGraphics: 3D accelerated\nRelease: 1996',
-        images: [
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300'
-        ]
+        description: 'Nintendo 64 was a 64-bit gaming console released in 1996.',
+        details: 'Release: 1996\nGeneration: 5th',
+        searchTerm: 'Nintendo 64'
     },
     'FLOPPY_DISK': {
-        description: 'Floppy disks were the primary data storage medium for personal computers from the 1970s to 2000s. Despite their small capacity, they were indispensable for file transfer.',
-        details: 'Sizes: 8", 5.25", 3.5"\nCapacity: 1.44 MB (3.5")\nFormat: Magnetic\nRetired: 2010s',
-        images: [
-            'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=300',
-            'https://images.unsplash.com/photo-1615344434562-c0eb0d16a25f?w=300',
-            'https://images.unsplash.com/photo-1620225814913-c50bf820ce3d?w=300',
-            'https://images.unsplash.com/photo-1590080876-7b7b42f25c9d?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300'
-        ]
+        description: 'Floppy disks were primary data storage for early personal computers.',
+        details: 'Capacity: up to 1.44MB (3.5")',
+        searchTerm: 'floppy disk'
     },
     'TAMAGOTCHI': {
-        description: 'Tamagotchi was a digital pet toy that required constant care and attention. It became a worldwide phenomenon and the predecessor to modern virtual pet games.',
-        details: 'Type: Virtual pet\nDeveloper: Bandai\nScreen: LCD\nLaunched: 1996',
-        images: [
-            'https://images.unsplash.com/photo-1589519160732-57fc498494f8?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300'
-        ]
+        description: 'Tamagotchi was a handheld digital pet from 1996.',
+        details: 'Developer: Bandai\nLaunched: 1996',
+        searchTerm: 'Tamagotchi'
     },
     'GAMEBOY': {
-        description: 'The Game Boy was a handheld gaming device that dominated the portable gaming market. Its durability and game library made it a gaming legend.',
-        details: 'Display: Dot-matrix LCD\nResolution: 160x144\nGames: Cartridge-based\nRelease: 1989',
-        images: [
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300'
-        ]
+        description: 'Game Boy was a handheld gaming device launched in 1989.',
+        details: 'Display: dot-matrix LCD',
+        searchTerm: 'Game Boy'
     },
     'CRT_MONITOR': {
-        description: 'CRT (Cathode Ray Tube) monitors were the standard display technology for decades. They produced vibrant colors and were essential for computing and gaming.',
-        details: 'Type: Electron beam\nResolution: Up to 1600x1200\nRefresh rate: 60-120 Hz\nRetired: 2010s',
-        images: [
-            'https://images.unsplash.com/photo-1617639547912-48416dbb4e3d?w=300',
-            'https://images.unsplash.com/photo-1591290619039-66bbe77f0d3f?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300'
-        ]
+        description: 'CRT monitors used cathode ray tube technology for displays.',
+        details: 'Characteristic: bulky, curved glass',
+        searchTerm: 'CRT monitor'
     },
     'MINIDISC': {
-        description: 'MiniDisc was a digital audio format that offered better sound quality and storage than cassettes. It was popular in Japan and among audiophiles.',
-        details: 'Format: Digital audio\nCapacity: 80-250 MB\nCompression: ATRAC\nPeriod: 1992-2010s',
-        images: [
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300'
-        ]
+        description: 'MiniDisc was a magneto-optical disc-based storage format for audio.',
+        details: 'Period: 1992-2010s',
+        searchTerm: 'MiniDisc'
     },
     'ATARI': {
-        description: 'Atari was a pioneering video game company that launched the home video game industry with the Atari 2600 console.',
-        details: 'Famous games: Pong, Space Invaders\nGeneration: 2nd\nConsole: Atari 2600\nFounded: 1972',
-        images: [
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300'
-        ]
+        description: 'Atari helped launch the home video game industry.',
+        details: 'Notable console: Atari 2600',
+        searchTerm: 'Atari'
     },
     'WALKMAN': {
-        description: 'The Walkman was a portable cassette player that revolutionized personal music listening. It defined mobile entertainment for a generation.',
-        details: 'Type: Portable audio\nMedia: Cassette tape\nBattery: AA/AAA batteries\nLaunched: 1979',
-        images: [
-            'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=300',
-            'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300',
-            'https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=300',
-            'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300'
-        ]
+        description: 'Walkman was a portable cassette player introduced by Sony.',
+        details: 'Launched: 1979',
+        searchTerm: 'Walkman'
     },
     'DIAL_UP': {
-        description: 'Dial-up was the first method for accessing the Internet at home. The characteristic modem sound became iconic for an era of online exploration.',
-        details: 'Speed: 56k maximum\nConnection: Telephone line\nSound: Handshake noise\nEra: 1990s-2000s',
-        images: [
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300'
-        ]
+        description: 'Dial-up was the first method for consumer internet access.',
+        details: 'Speed: up to 56k',
+        searchTerm: 'dial-up modem'
     },
     'TYPEWRITER': {
-        description: 'Typewriters were mechanical writing devices used for decades before computers. They remain symbols of writing and journalism.',
-        details: 'Mechanism: Mechanical keys\nOutput: Paper documents\nVariations: Manual, electric\nPeriod: 1870s-1980s',
-        images: [
-            'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=300',
-            'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300'
-        ]
+        description: 'Typewriters are mechanical devices for printing text on paper.',
+        details: 'Mechanism: mechanical keys',
+        searchTerm: 'typewriter'
     },
     'FAX_MACHINE': {
-        description: 'Fax machines transmitted documents electronically over telephone lines. They were essential for business communication before email became widespread.',
-        details: 'Transmission: Analog signals\nResolution: 200-400 dpi\nSpeed: 30 seconds per page\nPeak use: 1980s-1990s',
-        images: [
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300'
-        ]
+        description: 'Fax machines transmitted scanned documents over telephone networks.',
+        details: 'Peak use: 1980s-1990s',
+        searchTerm: 'fax machine'
     },
     'BETAMAX': {
-        description: 'Betamax was a video format that competed with VHS. Despite superior quality, it lost the format war due to licensing and availability issues.',
-        details: 'Format: Analog video\nQuality: Superior to VHS\nCapacity: 60-300 minutes\nPeriod: 1975-2002',
-        images: [
-            'https://images.unsplash.com/photo-1595432707802-6b2626ef1c91?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300'
-        ]
+        description: 'Betamax was a videotape format that competed with VHS.',
+        details: 'Introduced: 1975',
+        searchTerm: 'Betamax'
     },
     'LASERDISC': {
-        description: 'LaserDisc was a high-quality optical media format for movies and games. It offered superior picture quality and became a collector\'s item.',
-        details: 'Format: Optical disc\nResolution: 240p interlaced\nCapacity: 2-4 GB per side\nPeriod: 1978-2009',
-        images: [
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300',
-            'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300',
-            'https://images.unsplash.com/photo-1609034227505-5876f6aa4e90?w=300',
-            'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=300',
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300',
-            'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=300',
-            'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=300',
-            'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300',
-            'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300'
-        ]
+        description: 'LaserDisc was an early optical disc format for movies.',
+        details: 'Period: late 1970s-2000s',
+        searchTerm: 'LaserDisc'
     }
 };
 
 let draggedWord = null;
+let currentSearchTerm = null;
+let lastActivityTime = Date.now();
+let inactivityTimeout = null;
+let deletionInterval = null;
+let countdownStartTime = null;
+let blinkActive = false;
+let blinkInterval = null;
 
-// ===== VIEW SWITCHING =====
-enterBtn.addEventListener('click', () => {
-    viewEntrance.classList.remove('active');
-    viewMain.classList.add('active');
-    btnCollection.style.display = 'flex'; // Show btn-collection
-    setTimeout(() => randomizeWordPositions(), 100);
-});
+// ===== LOCAL STORAGE =====
+const STORAGE_KEY = 'lostTechArchive';
+const INACTIVITY_THRESHOLD = 2 * 60 * 1000; // 2 minutes in milliseconds
+const DELETION_INTERVAL = 2 * 60 * 1000; // Delete oldest image every 2 minutes
+const WARNING_SECONDS = 30; // last 30 seconds warning
 
-backBtn.addEventListener('click', () => {
-    viewResults.classList.remove('active');
-    viewMain.classList.add('active');
-    btnCollection.style.display = 'flex'; // Ensure btn-collection is visible
-    searchInput.value = '';
-});
+function loadArchive() {
+    const data = localStorage.getItem(STORAGE_KEY);
+    return data ? JSON.parse(data) : [];
+}
 
-// Hide btn-collection on entrance, show on other pages
-window.addEventListener('load', () => {
-    btnCollection.style.display = 'none'; // Hidden by default (entrance page)
-});
+function saveToArchive(imageUrl, techName) {
+    const archive = loadArchive();
+    const item = {
+        id: Date.now() + Math.random(),
+        imageUrl,
+        techName,
+        savedDate: new Date().toISOString(),
+        timestamp: Date.now()
+    };
+    archive.push(item);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(archive));
+}
 
-// ===== DRAG AND DROP =====
-words.forEach(word => {
-    word.addEventListener('dragstart', (e) => {
-        draggedWord = word;
-        word.classList.add('dragging');
-        e.dataTransfer.effectAllowed = 'copy';
-    });
+function removeFromArchive(id) {
+    let archive = loadArchive();
+    archive = archive.filter(item => item.id !== id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(archive));
+}
 
-    word.addEventListener('dragend', () => {
-        word.classList.remove('dragging');
-        draggedWord = null;
-    });
-});
-
-dropZone.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'copy';
-    dropZone.classList.add('drag-over');
-});
-
-dropZone.addEventListener('dragleave', () => {
-    dropZone.classList.remove('drag-over');
-});
-
-dropZone.addEventListener('drop', (e) => {
-    e.preventDefault();
-    dropZone.classList.remove('drag-over');
-
-    if (draggedWord) {
-        const wordText = draggedWord.textContent.trim();
-        searchInput.value = wordText;
-        
-        // Add 2-second delay for animation observation
-        setTimeout(() => {
-            performSearch(wordText);
-        }, 2000);
-    }
-});
-
-// ===== TEXT SEARCH =====
-searchInput.addEventListener('input', (e) => {
-    const query = e.target.value.trim();
-    // Don't auto-search on input
-});
-
-searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        const query = searchInput.value.trim();
-        performSearch(query);
-    }
-});
-
-function performSearch(query) {
-    const normalizedQuery = query.toUpperCase();
-    
-    // Check if search term exists in database
-    if (searchData[normalizedQuery]) {
-        displayResults(normalizedQuery);
-    } else {
-        showError('Sorry we cannot find relative information in our database.');
+function deleteOldestImage() {
+    const archive = loadArchive();
+    if (archive.length > 0) {
+        // Sort by timestamp to find oldest
+        archive.sort((a, b) => a.timestamp - b.timestamp);
+        const oldestItem = archive[0];
+        removeFromArchive(oldestItem.id);
+        showInactivityNotification(`⚠ Sorry, you lost a piece of your memory: ${oldestItem.techName}`);
+        displayArchive(); // Refresh archive if on that page
     }
 }
 
-function displayResults(searchTerm) {
-    const data = searchData[searchTerm];
+// ===== TIMER & UI =====
+function updateTimer() {
+    const timerEl = document.getElementById('timer-display');
+    if (!timerEl) return;
+
+    const now = Date.now();
+    const inactiveTime = now - lastActivityTime;
     
-    // Update results page
-    document.getElementById('result-title').textContent = searchTerm;
-    document.getElementById('result-description').textContent = data.description;
-    document.getElementById('result-details').textContent = data.details;
+    // Calculate remaining time until deletion (2 minutes = 120 seconds)
+    const remainingMs = Math.max(0, INACTIVITY_THRESHOLD - inactiveTime);
+    const totalSeconds = Math.ceil(remainingMs / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    timerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+    // Change color and add blinking for last 30 seconds
+    if (totalSeconds > 0 && totalSeconds <= WARNING_SECONDS) {
+        timerEl.classList.add('timer-warning');
+        if (!blinkActive) {
+            timerEl.classList.add('blink-text');
+            blinkActive = true;
+        }
+    } else if (totalSeconds <= 0) {
+        timerEl.textContent = '00:00';
+        timerEl.classList.add('timer-warning');
+        if (blinkActive) {
+            timerEl.classList.remove('blink-text');
+            blinkActive = false;
+        }
+    } else {
+        timerEl.classList.remove('timer-warning');
+        if (blinkActive) {
+            timerEl.classList.remove('blink-text');
+            blinkActive = false;
+        }
+    }
+}
+
+function resetActivityTimer() {
+    lastActivityTime = Date.now();
+    countdownStartTime = null;
+
+    // Clear existing timeout
+    if (inactivityTimeout) clearTimeout(inactivityTimeout);
+    // stop scheduled deletion cycle until inactivity occurs again
+    if (blinkInterval) {
+        clearInterval(blinkInterval);
+        blinkInterval = null;
+    }
+
+    // Reset timer display
+    const timerEl = document.getElementById('timer-display');
+    if (timerEl) {
+        timerEl.classList.remove('timer-warning');
+        timerEl.classList.remove('blink-text');
+        blinkActive = false;
+        // show reset time immediately
+        const minutes = Math.floor(INACTIVITY_THRESHOLD / 60000);
+        const seconds = Math.floor((INACTIVITY_THRESHOLD % 60000) / 1000);
+        timerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     
-    // Display images from local array
-    displayImages(data.images);
-    
-    // Switch views
+    }
+
+    // Set new inactivity timer
+    inactivityTimeout = setTimeout(() => {
+        startDeletionCycle();
+    }, INACTIVITY_THRESHOLD);
+}
+
+function startDeletionCycle() {
+    if (deletionInterval) return; 
+    // Delete immediately on first inactivity
+    deleteOldestImage();
+    // Then delete every 2 minutes
+    deletionInterval = setInterval(() => {
+        deleteOldestImage();
+    }, DELETION_INTERVAL);
+}
+
+function showInactivityNotification(message) {
+    const notif = document.createElement('div');
+    notif.className = 'inactivity-notification';
+    notif.textContent = message;
+
+    document.body.appendChild(notif);
+
+    setTimeout(() => {
+        notif.classList.add('notification-exit');
+        setTimeout(() => notif.remove(), 300);
+    }, 3500);
+}
+
+// ===== MOTION DETECTION =====
+function setupMotionDetection() {
+    const activityHandler = () => {
+        resetActivityTimer();
+    };
+
+    document.addEventListener('mousemove', activityHandler);
+    document.addEventListener('keydown', activityHandler);
+    document.addEventListener('click', activityHandler);
+    document.addEventListener('scroll', activityHandler, true);
+    document.addEventListener('touchstart', activityHandler);
+
+    // initialize last activity and timer UI
+    resetActivityTimer();
+    // update timer every 200ms
+    setInterval(updateTimer, 200);
+}
+
+// ===== NAVIGATION =====
+if (btnCollection) {
+    btnCollection.addEventListener('click', () => {
+        viewMain.classList.remove('active');
+        viewArchive.classList.add('active');
+        displayArchive();
+    });
+}
+
+if (btnCollectionResults) {
+    btnCollectionResults.addEventListener('click', () => {
+        viewResults.classList.remove('active');
+        viewArchive.classList.add('active');
+        displayArchive();
+    });
+}
+
+if (backBtn) {
+    backBtn.addEventListener('click', () => {
+        viewResults.classList.remove('active');
+        viewMain.classList.add('active');
+        searchInput.value = '';
+    });
+}
+
+if (backBtnArchive) {
+    backBtnArchive.addEventListener('click', () => {
+        viewArchive.classList.remove('active');
+        viewMain.classList.add('active');
+    });
+}
+
+// ===== DRAG & DROP =====
+if (words && words.length) {
+    words.forEach(word => {
+        word.addEventListener('dragstart', (e) => {
+            draggedWord = word;
+            word.classList.add('dragging');
+            if (e.dataTransfer) e.dataTransfer.effectAllowed = 'copy';
+        });
+        word.addEventListener('dragend', () => {
+            if (draggedWord) draggedWord.classList.remove('dragging');
+            draggedWord = null;
+        });
+    });
+}
+
+if (dropZone) {
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+        dropZone.classList.add('drag-over');
+    });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('drag-over');
+        if (!draggedWord) return;
+        const wordText = draggedWord.textContent.trim();
+        if (searchInput) searchInput.value = wordText;
+        setTimeout(() => performSearch(wordText), 350);
+    });
+}
+
+// ===== TEXT SEARCH =====
+if (searchInput) {
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const q = searchInput.value.trim();
+            performSearch(q);
+        }
+    });
+}
+
+// ===== IMAGE API: Wikimedia Commons =====
+async function fetchImagesFromWikimedia(query, limit = 12) {
+    const api = 'https://commons.wikimedia.org/w/api.php' +
+        `?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}` +
+        `&gsrnamespace=6&gsrlimit=${Math.min(limit * 2, 50)}` +
+        `&prop=imageinfo&iiprop=url&iiurlwidth=300&format=json&origin=*`;
+    try {
+        const res = await fetch(api);
+        if (!res.ok) throw new Error('Wikimedia fetch failed');
+        const json = await res.json();
+        if (!json.query || !json.query.pages) return [];
+        const pages = Object.values(json.query.pages);
+        const urls = pages.map(p => {
+            const ii = p.imageinfo && p.imageinfo[0];
+            return (ii && (ii.thumburl || ii.url)) || null;
+        }).filter(Boolean);
+        return urls.slice(0, limit);
+    } catch (err) {
+        console.error('Wikimedia error:', err);
+        return [];
+    }
+}
+
+// ===== SEARCH & RESULTS =====
+async function performSearch(query) {
+    if (!query) return;
+    const normalized = query.toUpperCase();
+    if (!searchData[normalized]) {
+        showError('Sorry we cannot find relative information in our database.');
+        return;
+    }
+
+    const data = searchData[normalized];
+    currentSearchTerm = normalized;
+
+    const titleEl = document.getElementById('result-title');
+    const descEl = document.getElementById('result-description');
+    const detailsEl = document.getElementById('result-details');
+    const imagesGrid = document.getElementById('images-grid');
+
+    if (titleEl) titleEl.textContent = normalized;
+    if (descEl) descEl.textContent = data.description || '';
+    if (detailsEl) detailsEl.textContent = data.details || '';
+    if (imagesGrid) imagesGrid.innerHTML = '<p class="loading-text">Loading memories...</p>';
+
     viewMain.classList.remove('active');
+    viewArchive.classList.remove('active');
     viewResults.classList.add('active');
-    btnCollection.style.display = 'flex'; // Show btn-collection on results page
+
+    const apiQuery = data.searchTerm || normalized;
+    const apiImages = await fetchImagesFromWikimedia(apiQuery, 12);
+
+    if (apiImages && apiImages.length > 0) {
+        displayImages(apiImages);
+    } else {
+        if (imagesGrid) imagesGrid.innerHTML = '<p class="loading-text">No memories available</p>';
+    }
 }
 
 function displayImages(imageUrls) {
     const imagesGrid = document.getElementById('images-grid');
+    if (!imagesGrid) return;
     imagesGrid.innerHTML = '';
-    
-    imageUrls.forEach(imageUrl => {
-        const imageItem = document.createElement('div');
-        imageItem.className = 'image-item';
-        imageItem.innerHTML = `
-            <img 
-                src="${imageUrl}" 
-                alt="Technology image"
-                crossorigin="anonymous"
-            >
-        `;
-        imagesGrid.appendChild(imageItem);
+
+    const toShow = Array.isArray(imageUrls) ? imageUrls.slice(0, 12) : [];
+
+    toShow.forEach(url => {
+        const item = document.createElement('div');
+        item.className = 'image-item';
+
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = 'Technology image';
+        img.loading = 'lazy';
+
+        const saveBtn = document.createElement('button');
+        saveBtn.className = 'save-btn';
+        saveBtn.textContent = '+ SAVE';
+        saveBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            saveToArchive(url, currentSearchTerm);
+            showSuccess('✓ A memory saved to archive');
+        });
+
+        img.addEventListener('error', () => {
+            if (item.parentElement) item.parentElement.removeChild(item);
+        });
+
+        item.appendChild(img);
+        item.appendChild(saveBtn);
+        imagesGrid.appendChild(item);
+    });
+
+    if (imagesGrid.children.length === 0) {
+        imagesGrid.innerHTML = '<p class="loading-text">No memories available</p>';
+    }
+}
+
+// ===== ARCHIVE DISPLAY =====
+function displayArchive() {
+    const archiveContent = document.getElementById('archive-content');
+    const archive = loadArchive();
+
+    if (archive.length === 0) {
+        archiveContent.innerHTML = '<p class="empty-archive-text">Nothing saved yet. Find your memories from database.</p>';
+        return;
+    }
+
+    archiveContent.innerHTML = '';
+
+    archive.forEach(item => {
+        const archiveItem = document.createElement('div');
+        archiveItem.className = 'archive-item';
+        const header = document.createElement('div');
+        header.className = 'archive-item-header';
+        const titleDiv = document.createElement('div');
+        titleDiv.className = 'archive-item-title-row';
+        const title = document.createElement('h4');
+        title.textContent = item.techName;
+        const timestamp = document.createElement('span');
+        timestamp.className = 'archive-item-timestamp';
+        const savedDate = new Date(item.savedDate);
+        timestamp.textContent = savedDate.toLocaleString();
+
+        titleDiv.appendChild(title);
+        titleDiv.appendChild(timestamp);
+        header.appendChild(titleDiv);
+
+        const imageContainer = document.createElement('div');
+        imageContainer.className = 'archive-item-image';
+        const img = document.createElement('img');
+        img.src = item.imageUrl;
+        img.alt = item.techName;
+        imageContainer.appendChild(img);
+
+        const footer = document.createElement('div');
+        footer.className = 'archive-item-footer';
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'archive-remove-btn';
+        removeBtn.textContent = '× Remove';
+        removeBtn.addEventListener('click', () => {
+            removeFromArchive(item.id);
+            displayArchive();
+        });
+        footer.appendChild(removeBtn);
+
+        archiveItem.appendChild(header);
+        archiveItem.appendChild(imageContainer);
+        archiveItem.appendChild(footer);
+        archiveContent.appendChild(archiveItem);
     });
 }
 
+// ===== MODALS =====
 function showError(message) {
-    errorMessage.textContent = message;
-    errorModal.classList.remove('hidden');
+    if (errorMessage) errorMessage.textContent = message;
+    if (errorModal) errorModal.classList.remove('hidden');
 }
 
-errorClose.addEventListener('click', () => {
-    errorModal.classList.add('hidden');
-});
+function showSuccess(message) {
+    const successMessage = document.getElementById('success-message');
+    if (successMessage) successMessage.textContent = message;
+    if (successModal) successModal.classList.remove('hidden');
+}
 
-errorModal.addEventListener('click', (e) => {
-    if (e.target === errorModal) {
-        errorModal.classList.add('hidden');
-    }
-});
+if (errorClose) errorClose.addEventListener('click', () => { if (errorModal) errorModal.classList.add('hidden'); });
+if (successClose) successClose.addEventListener('click', () => { if (successModal) successModal.classList.add('hidden'); });
 
-// ===== RANDOM WORD POSITIONING =====
+if (errorModal) {
+    errorModal.addEventListener('click', (e) => {
+        if (e.target === errorModal) errorModal.classList.add('hidden');
+    });
+}
+
+if (successModal) {
+    successModal.addEventListener('click', (e) => {
+        if (e.target === successModal) successModal.classList.add('hidden');
+    });
+}
+
+// ===== WORD POSITIONING =====
 function randomizeWordPositions() {
     if (!container) return;
-    
+
     const containerWidth = container.offsetWidth;
     const containerHeight = container.offsetHeight;
     const centerX = containerWidth / 2;
     const centerY = containerHeight / 2;
-    
-    // Word dimensions
+
     const wordWidth = 120;
     const wordHeight = 48;
     const containerMargin = 70;
-    
-    // Search bar exclusion zone
     const exclusionRadius = 260;
-    
-    // Minimum distance between word centers
     const minWordDistance = 200;
-    
+
     const positions = [];
     const wordArray = Array.from(words);
 
@@ -504,91 +550,64 @@ function randomizeWordPositions() {
         const maxAttempts = 3000;
 
         while (!placed && attempts < maxAttempts) {
-            // Random positioning
             const x = containerMargin + Math.random() * (containerWidth - 2 * containerMargin);
             const y = containerMargin + Math.random() * (containerHeight - 2 * containerMargin);
 
-            // ===== CHECK CONTAINER BOUNDARIES =====
-            const wordLeftEdge = x - wordWidth / 2;
-            const wordRightEdge = x + wordWidth / 2;
-            const wordTopEdge = y - wordHeight / 2;
-            const wordBottomEdge = y + wordHeight / 2;
+            const left = x - wordWidth / 2;
+            const right = x + wordWidth / 2;
+            const top = y - wordHeight / 2;
+            const bottom = y + wordHeight / 2;
 
-            if (wordLeftEdge < containerMargin || 
-                wordRightEdge > containerWidth - containerMargin ||
-                wordTopEdge < containerMargin || 
-                wordBottomEdge > containerHeight - containerMargin) {
-                attempts++;
-                continue;
+            if (left < containerMargin || right > containerWidth - containerMargin || top < containerMargin || bottom > containerHeight - containerMargin) {
+                attempts++; continue;
             }
 
-            // ===== CHECK SEARCH BAR EXCLUSION ZONE =====
-            const distToCenter = Math.sqrt(
-                Math.pow(x - centerX, 2) + 
-                Math.pow(y - centerY, 2)
-            );
-            
-            if (distToCenter < exclusionRadius) {
-                attempts++;
-                continue;
-            }
+            const distToCenter = Math.hypot(x - centerX, y - centerY);
+            if (distToCenter < exclusionRadius) { attempts++; continue; }
 
-            // ===== CHECK WORD-TO-WORD COLLISION =====
             let collides = false;
-            
             for (let pos of positions) {
-                const distToWord = Math.sqrt(
-                    Math.pow(x - pos.x, 2) + 
-                    Math.pow(y - pos.y, 2)
-                );
-                
-                if (distToWord < minWordDistance) {
-                    collides = true;
-                    break;
-                }
+                if (Math.hypot(x - pos.x, y - pos.y) < minWordDistance) { collides = true; break; }
             }
-
             if (!collides) {
                 positions.push({ x, y });
                 word.style.position = 'absolute';
                 word.style.left = x + 'px';
                 word.style.top = y + 'px';
-                word.style.transform = 'translate(-50%, -50%)';
+                word.style.transform = 'translate(-50%,-50%)';
                 placed = true;
             }
-
             attempts++;
         }
 
         if (!placed) {
-            // Fallback: place on orbital ring
             const angle = (index / wordArray.length) * Math.PI * 2;
             const radius = exclusionRadius + 160;
-            const fallbackX = centerX + Math.cos(angle) * radius;
-            const fallbackY = centerY + Math.sin(angle) * radius;
-            
-            const clampedX = Math.max(
-                containerMargin + wordWidth / 2,
-                Math.min(fallbackX, containerWidth - containerMargin - wordWidth / 2)
-            );
-            const clampedY = Math.max(
-                containerMargin + wordHeight / 2,
-                Math.min(fallbackY, containerHeight - containerMargin - wordHeight / 2)
-            );
-            
+            const fx = centerX + Math.cos(angle) * radius;
+            const fy = centerY + Math.sin(angle) * radius;
+            const clampedX = Math.max(containerMargin + wordWidth / 2, Math.min(fx, containerWidth - containerMargin - wordWidth / 2));
+            const clampedY = Math.max(containerMargin + wordHeight / 2, Math.min(fy, containerHeight - containerMargin - wordHeight / 2));
             word.style.position = 'absolute';
             word.style.left = clampedX + 'px';
             word.style.top = clampedY + 'px';
-            word.style.transform = 'translate(-50%, -50%)';
+            word.style.transform = 'translate(-50%,-50%)';
         }
     });
 }
 
-// Initialize on page load
+// ===== CLEAR ARCHIVE ON PAGE CLOSE =====
+window.addEventListener('beforeunload', () => {
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) { /* ignore */ }
+});
+// UNLOAD
+window.addEventListener('unload', () => {
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) { /* ignore */ }
+});
+
+// ===== INITIALIZATION =====
 window.addEventListener('load', () => {
-    if (viewMain.classList.contains('active')) {
-        randomizeWordPositions();
-    }
+    if (viewMain.classList.contains('active')) randomizeWordPositions();
+    setupMotionDetection();
 });
 
 window.addEventListener('resize', randomizeWordPositions);

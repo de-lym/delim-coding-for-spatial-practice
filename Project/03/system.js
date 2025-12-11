@@ -15,6 +15,7 @@ const btnCollectionResults = document.getElementById('btn-collection-results');
 const successModal = document.getElementById('success-modal');
 const successClose = document.getElementById('success-close');
 
+
 // ===== DATA =====
 const searchData = {
     'VHS TAPE': {

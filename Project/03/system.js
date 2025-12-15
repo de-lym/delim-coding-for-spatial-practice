@@ -16,97 +16,511 @@ const successModal = document.getElementById('success-modal');
 const successClose = document.getElementById('success-close');
 
 
+
 // ===== DATA =====
 const searchData = {
     'VHS TAPE': {
         description: 'VHS (Video Home System) tapes were the dominant format for recording and playing back video content from the 1980s through early 2000s.',
         details: 'Format: Analog video\nResolution: 480i (NTSC)\nCapacity: 120-240 minutes\nRelease: 1976',
-        searchTerm: 'VHS tape'
+        images: [
+            'images/vhs/vhs_1.jpg',
+            'images/vhs/vhs_2.jpg',
+            'images/vhs/vhs_3.jpg',
+            'images/vhs/vhs_4.jpeg',
+            'images/vhs/vhs_5.jpg',
+            'images/vhs/vhs_6.jpg',
+            'images/vhs/vhs_7.jpg',
+            'images/vhs/vhs_8.png',
+            'images/vhs/vhs_9.jpg',
+            'images/vhs/vhs_10.jpg',
+            'images/vhs/vhs_11.jpg',
+            'images/vhs/vhs_12.png',
+            'images/vhs/vhs_13.jpg',
+            'images/vhs/vhs_14.jpg',
+            'images/vhs/vhs_15.jpeg',
+            'images/vhs/vhs_16.jpg',
+            'images/vhs/vhs_17.jpg',
+            'images/vhs/vhs_18.jpg',
+            'images/vhs/vhs_19.jpg',
+            'images/vhs/vhs_20.jpg',
+            'images/vhs/vhs_21.jpg',
+        ]
     },
     'PAGER': {
         description: 'Pagers were wireless telecommunications devices that received text messages and alerts.',
         details: 'Type: One-way receiver\nPeak usage: 1990s',
-        searchTerm: 'pager'
+        images: [
+            'images/pager/pager_1.jpg',
+            'images/pager/pager_2.jpg',
+            'images/pager/pager_3.jpg',
+            'images/pager/pager_4.jpeg',
+            'images/pager/pager_5.jpg',
+            'images/pager/pager_6.png',
+            'images/pager/pager_7.jpg',
+            'images/pager/pager_8.jpg',
+            'images/pager/pager_9.jpg',
+            'images/pager/pager_10.jpeg',
+            'images/pager/pager_11.png',
+            'images/pager/pager_12.jpg',
+            'images/pager/pager_13.png',
+            'images/pager/pager_14.jpg',
+            'images/pager/pager_15.jpg'
+        ]
     },
     'POLAROID': {
         description: 'Polaroid cameras produced instant photographs without requiring darkroom development.',
         details: 'Film type: Instant\nDevelop time: 1-2 minutes\nLaunched: 1948',
-        searchTerm: 'Polaroid camera'
+        images: [
+            'images/polaroid/polaroid_1.jpg',
+            'images/polaroid/polaroid_2.jpeg',
+            'images/polaroid/polaroid_3.jpg',
+            'images/polaroid/polaroid_4.jpg',
+            'images/polaroid/polaroid_5.jpeg',
+            'images/polaroid/polaroid_6.jpg',
+            'images/polaroid/polaroid_7.jpg',
+            'images/polaroid/polaroid_8.jpg',
+            'images/polaroid/polaroid_9.jpeg',
+            'images/polaroid/polaroid_10.jpg',
+            'images/polaroid/polaroid_11.jpg',
+            'images/polaroid/polaroid_12.jpg',
+            'images/polaroid/polaroid_13.jpg',
+            'images/polaroid/polaroid_14.jpeg',
+            'images/polaroid/polaroid_15.jpg',
+            'images/polaroid/polaroid_16.jpg',
+            'images/polaroid/polaroid_17.jpg',
+            'images/polaroid/polaroid_18.jpg',
+            'images/polaroid/polaroid_19.jpg',
+        ]
     },
     'CASSETTE': {
         description: 'Cassette tapes were the primary medium for music and audio recording from the 1970s to 2000s.',
         details: 'Format: Magnetic tape\nDuration: 30-90 minutes',
-        searchTerm: 'cassette tape'
+        images: [
+            'images/cassette/cassette_1.jpg',
+            'images/cassette/cassette_2.jpg',
+            'images/cassette/cassette_3.jpeg',
+            'images/cassette/cassette_4.jpg',
+            'images/cassette/cassette_5.png',
+            'images/cassette/cassette_6.jpg',
+            'images/cassette/cassette_7.jpg',
+            'images/cassette/cassette_8.jpg',
+            'images/cassette/cassette_9.png',
+            'images/cassette/cassette_10.jpg',
+            'images/cassette/cassette_11.jpg',
+            'images/cassette/cassette_12.jpg',
+            'images/cassette/cassette_13.jpg',
+            'images/cassette/cassette_14.jpg',
+            'images/cassette/cassette_15.jpg',
+            'images/cassette/cassette_16.jpg',
+            'images/cassette/cassette_17.jpeg',
+            'images/cassette/cassette_18.jpg',
+            'images/cassette/cassette_19.jpg'
+        ]
     },
     'BOOMBOX': {
         description: 'Boomboxes were portable stereo systems that played cassettes and radio.',
         details: 'Era: 1980s-1990s',
-        searchTerm: 'boombox'
+        images: [
+            'images/boombox/boombox_1.jpg',
+            'images/boombox/boombox_2.jpg',
+            'images/boombox/boombox_3.jpg',
+            'images/boombox/boombox_4.jpg',
+            'images/boombox/boombox_5.jpg',
+            'images/boombox/boombox_6.jpg',
+            'images/boombox/boombox_7.jpg',
+            'images/boombox/boombox_8.jpg',
+            'images/boombox/boombox_9.jpg',
+            'images/boombox/boombox_10.jpg',
+            'images/boombox/boombox_11.jpg',
+            'images/boombox/boombox_12.jpeg',
+            'images/boombox/boombox_13.jpg',
+            'images/boombox/boombox_14.jpeg',
+            'images/boombox/boombox_15.jpg',
+            'images/boombox/boombox_16.jpg',
+            'images/boombox/boombox_17.jpg',
+            'images/boombox/boombox_18.jpg',
+            'images/boombox/boombox_19.jpg',
+            'images/boombox/boombox_20.png',
+            'images/boombox/boombox_21.png',
+            'images/boombox/boombox_22.png'
+        ]
     },
     'NINTENDO64': {
         description: 'Nintendo 64 was a 64-bit gaming console released in 1996.',
         details: 'Release: 1996\nGeneration: 5th',
-        searchTerm: 'Nintendo 64'
+        images: [
+            'images/nintendo64/nintendo64_1.jpg',
+            'images/nintendo64/nintendo64_2.jpg',
+            'images/nintendo64/nintendo64_3.jpg',
+            'images/nintendo64/nintendo64_4.jpg',
+            'images/nintendo64/nintendo64_5.jpg',
+            'images/nintendo64/nintendo64_6.jpg',
+            'images/nintendo64/nintendo64_7.png',
+            'images/nintendo64/nintendo64_8.jpg',
+            'images/nintendo64/nintendo64_9.jpg',
+            'images/nintendo64/nintendo64_10.png',
+            'images/nintendo64/nintendo64_11.jpg',
+            'images/nintendo64/nintendo64_12.jpg',
+            'images/nintendo64/nintendo64_13.jpeg',
+            'images/nintendo64/nintendo64_14.jpeg',
+            'images/nintendo64/nintendo64_15.jpg',
+            'images/nintendo64/nintendo64_16.jpg',
+            'images/nintendo64/nintendo64_17.jpg',
+            'images/nintendo64/nintendo64_18.jpg',
+            'images/nintendo64/nintendo64_19.jpg',
+            'images/nintendo64/nintendo64_20.jpg',
+            'images/nintendo64/nintendo64_21.png',
+            'images/nintendo64/nintendo64_22.jpg',
+            'images/nintendo64/nintendo64_23.jpg',
+        ]
     },
     'FLOPPY_DISK': {
         description: 'Floppy disks were primary data storage for early personal computers.',
         details: 'Capacity: up to 1.44MB (3.5")',
-        searchTerm: 'floppy disk'
-    },
-    'TAMAGOTCHI': {
-        description: 'Tamagotchi was a handheld digital pet from 1996.',
-        details: 'Developer: Bandai\nLaunched: 1996',
-        searchTerm: 'Tamagotchi'
+        images: [
+            'images/floppydisk/floppy_disk_1.jpg',
+            'images/floppydisk/floppy_disk_2.jpg',
+            'images/floppydisk/floppy_disk_3.jpg',
+            'images/floppydisk/floppy_disk_4.jpeg',
+            'images/floppydisk/floppy_disk_5.jpg',
+            'images/floppydisk/floppy_disk_6.jpeg',
+            'images/floppydisk/floppy_disk_7.jpg',
+            'images/floppydisk/floppy_disk_8.jpg',
+            'images/floppydisk/floppy_disk_9.jpg',
+            'images/floppydisk/floppy_disk_10.jpg',
+            'images/floppydisk/floppy_disk_11.jpg',
+            'images/floppydisk/floppy_disk_12.jpg',
+            'images/floppydisk/floppy_disk_13.jpg',
+            'images/floppydisk/floppy_disk_14.jpg',
+            'images/floppydisk/floppy_disk_15.jpg',
+            'images/floppydisk/floppy_disk_16.jpg',
+            'images/floppydisk/floppy_disk_17.jpg',
+            'images/floppydisk/floppy_disk_18.jpg',
+            'images/floppydisk/floppy_disk_19.jpg',
+            'images/floppydisk/floppy_disk_20.jpg'
+        ]
     },
     'GAMEBOY': {
         description: 'Game Boy was a handheld gaming device launched in 1989.',
         details: 'Display: dot-matrix LCD',
-        searchTerm: 'Game Boy'
+        images: [
+            'images/gameboy/gameboy_1.jpg',
+            'images/gameboy/gameboy_2.jpg',
+            'images/gameboy/gameboy_3.jpg',
+            'images/gameboy/gameboy_4.jpg',
+            'images/gameboy/gameboy_5.jpg',
+            'images/gameboy/gameboy_6.jpeg',
+            'images/gameboy/gameboy_7.jpg',
+            'images/gameboy/gameboy_8.jpg',
+            'images/gameboy/gameboy_9.jpg',
+            'images/gameboy/gameboy_10.jpg',
+            'images/gameboy/gameboy_11.jpg',
+            'images/gameboy/gameboy_12.jpg',
+            'images/gameboy/gameboy_13.jpg',
+            'images/gameboy/gameboy_14.jpeg',
+            'images/gameboy/gameboy_15.png',
+            'images/gameboy/gameboy_16.jpg',
+            'images/gameboy/gameboy_17.jpg',
+            'images/gameboy/gameboy_18.jpg',
+            'images/gameboy/gameboy_19.jpg',
+            'images/gameboy/gameboy_20.jpg',
+            'images/gameboy/gameboy_21.jpg',
+            'images/gameboy/gameboy_22.jpg',
+            'images/gameboy/gameboy_23.jpg',
+            'images/gameboy/gameboy_24.jpg',
+            'images/gameboy/gameboy_25.jpg',
+            'images/gameboy/gameboy_26.jpeg',
+            'images/gameboy/gameboy_27.jpg',
+            'images/gameboy/gameboy_28.jpg',
+            'images/gameboy/gameboy_29.jpg',
+            'images/gameboy/gameboy_30.png',
+            'images/gameboy/gameboy_31.png',
+            'images/gameboy/gameboy_32.jpg'
+        ]
     },
     'CRT_MONITOR': {
         description: 'CRT monitors used cathode ray tube technology for displays.',
         details: 'Characteristic: bulky, curved glass',
-        searchTerm: 'CRT monitor'
+        images: [
+            'images/crt_monitor/crt_monitor_1.jpeg',
+            'images/crt_monitor/crt_monitor_2.jpg',
+            'images/crt_monitor/crt_monitor_3.jpg',
+            'images/crt_monitor/crt_monitor_4.jpg',
+            'images/crt_monitor/crt_monitor_5.jpg',
+            'images/crt_monitor/crt_monitor_6.jpg',
+            'images/crt_monitor/crt_monitor_7.jpg',
+            'images/crt_monitor/crt_monitor_8.png',
+            'images/crt_monitor/crt_monitor_9.jpg',
+            'images/crt_monitor/crt_monitor_10.jpg',
+            'images/crt_monitor/crt_monitor_11.jpg',
+            'images/crt_monitor/crt_monitor_12.jpg',
+            'images/crt_monitor/crt_monitor_13.jpg',
+            'images/crt_monitor/crt_monitor_14.jpg',
+            'images/crt_monitor/crt_monitor_15.jpeg',
+            'images/crt_monitor/crt_monitor_16.jpeg',
+            'images/crt_monitor/crt_monitor_17.jpg',
+            'images/crt_monitor/crt_monitor_18.jpg',
+            'images/crt_monitor/crt_monitor_19.jpg',
+            'images/crt_monitor/crt_monitor_20.jpg',
+            'images/crt_monitor/crt_monitor_21.jpg',
+            'images/crt_monitor/crt_monitor_22.jpg',
+            'images/crt_monitor/crt_monitor_23.jpg',
+            'images/crt_monitor/crt_monitor_24.jpg',
+            'images/crt_monitor/crt_monitor_25.jpeg',
+            'images/crt_monitor/crt_monitor_26.jpg',
+            'images/crt_monitor/crt_monitor_27.jpeg'
+        ]
     },
     'MINIDISC': {
         description: 'MiniDisc was a magneto-optical disc-based storage format for audio.',
         details: 'Period: 1992-2010s',
-        searchTerm: 'MiniDisc'
+        images: [
+            'images/minidisc/minidisc_1.jpg',
+            'images/minidisc/minidisc_2.jpg',
+            'images/minidisc/minidisc_3.jpg',
+            'images/minidisc/minidisc_4.png',
+            'images/minidisc/minidisc_5.jpg',
+            'images/minidisc/minidisc_6.jpg',
+            'images/minidisc/minidisc_7.jpg',
+            'images/minidisc/minidisc_8.jpg',
+            'images/minidisc/minidisc_9.gif',
+            'images/minidisc/minidisc_10.jpeg',
+            'images/minidisc/minidisc_11.jpg',
+            'images/minidisc/minidisc_12.jpeg',
+            'images/minidisc/minidisc_13.jpg',
+            'images/minidisc/minidisc_14.jpg',
+            'images/minidisc/minidisc_15.jpg',
+            'images/minidisc/minidisc_16.jpg',
+            'images/minidisc/minidisc_17.jpg',
+            'images/minidisc/minidisc_18.png',
+            'images/minidisc/minidisc_19.png',
+            'images/minidisc/minidisc_20.jpg',
+            'images/minidisc/minidisc_21.jpg',
+            'images/minidisc/minidisc_22.jpg',
+            'images/minidisc/minidisc_23.jpg',
+            'images/minidisc/minidisc_24.jpg',
+            'images/minidisc/minidisc_25.jpg',
+            'images/minidisc/minidisc_26.jpg',
+            'images/minidisc/minidisc_27.jpg'
+        ]
     },
     'ATARI': {
         description: 'Atari helped launch the home video game industry.',
         details: 'Notable console: Atari 2600',
-        searchTerm: 'Atari'
+        images: [
+            'images/atari/atari_1.jpg',
+            'images/atari/atari_2.jpg',
+            'images/atari/atari_3.jpg',
+            'images/atari/atari_4.jpeg',
+            'images/atari/atari_5.jpg',
+            'images/atari/atari_6.jpg',
+            'images/atari/atari_7.jpg',
+            'images/atari/atari_8.jpg',
+            'images/atari/atari_9.jpg',
+            'images/atari/atari_10.jpg',
+            'images/atari/atari_11.jpeg',
+            'images/atari/atari_12.png',
+            'images/atari/atari_13.jpg',
+            'images/atari/atari_14.jpg',
+            'images/atari/atari_15.jpg',
+            'images/atari/atari_16.jpg',
+            'images/atari/atari_17.jpeg',
+            'images/atari/atari_18.jpeg',
+            'images/atari/atari_19.jpg',
+            'images/atari/atari_20.jpeg',
+            'images/atari/atari_21.jpg',
+            'images/atari/atari_22.jpg',
+            'images/atari/atari_23.jpg',
+            'images/atari/atari_24.png',
+            'images/atari/atari_25.jpg',
+            'images/atari/atari_26.jpg'
+        ]
     },
     'WALKMAN': {
         description: 'Walkman was a portable cassette player introduced by Sony.',
         details: 'Launched: 1979',
-        searchTerm: 'Walkman'
+        images: [
+            'images/walkman/walkman_1.jpg',
+            'images/walkman/walkman_2.jpg',
+            'images/walkman/walkman_3.jpeg',
+            'images/walkman/walkman_4.jpg',
+            'images/walkman/walkman_5.jpg',
+            'images/walkman/walkman_6.png',
+            'images/walkman/walkman_7.jpg',
+            'images/walkman/walkman_8.jpeg',
+            'images/walkman/walkman_9.jpeg',
+            'images/walkman/walkman_10.jpeg',
+            'images/walkman/walkman_11.jpg',
+            'images/walkman/walkman_12.jpg',
+            'images/walkman/walkman_13.jpg',
+            'images/walkman/walkman_14.jpg',
+            'images/walkman/walkman_15.jpeg',
+            'images/walkman/walkman_16.jpg',
+            'images/walkman/walkman_17.jpg',
+            'images/walkman/walkman_18.jpg',
+            'images/walkman/walkman_19.jpg',
+            'images/walkman/walkman_20.jpg',
+            'images/walkman/walkman_21.jpg',
+            'images/walkman/walkman_22.jpg',
+            'images/walkman/walkman_23.jpg',
+            'images/walkman/walkman_24.jpeg',
+            'images/walkman/walkman_25.jpg'
+        ]
     },
     'DIAL_UP': {
         description: 'Dial-up was the first method for consumer internet access.',
         details: 'Speed: up to 56k',
-        searchTerm: 'dial-up modem'
+        images: [
+            'images/dial_up/dial_up_1.jpg',
+            'images/dial_up/dial_up_2.png',
+            'images/dial_up/dial_up_3.jpg',
+            'images/dial_up/dial_up_4.jpg',
+            'images/dial_up/dial_up_5.png',
+            'images/dial_up/dial_up_6.jpg',
+            'images/dial_up/dial_up_7.png',
+            'images/dial_up/dial_up_8.jpg',
+            'images/dial_up/dial_up_9.png',
+            'images/dial_up/dial_up_10.jpg',
+            'images/dial_up/dial_up_11.png',
+            'images/dial_up/dial_up_12.jpg',
+            'images/dial_up/dial_up_13.jpg',
+            'images/dial_up/dial_up_14.png',
+            'images/dial_up/dial_up_15.jpg',
+            'images/dial_up/dial_up_16.jpg',
+            'images/dial_up/dial_up_17.gif',
+            'images/dial_up/dial_up_18.jpg',
+            'images/dial_up/dial_up_19.jpg',
+            'images/dial_up/dial_up_20.jpg',
+            'images/dial_up/dial_up_21.jpeg',
+            'images/dial_up/dial_up_22.gif',
+            'images/dial_up/dial_up_23.gif',
+            'images/dial_up/dial_up_24.jpg',
+            'images/dial_up/dial_up_25.png'
+        ]
     },
     'TYPEWRITER': {
         description: 'Typewriters are mechanical devices for printing text on paper.',
         details: 'Mechanism: mechanical keys',
-        searchTerm: 'typewriter'
+        images: [
+            'images/typewriter/typewriter_1.jpg',
+            'images/typewriter/typewriter_2.jpg',
+            'images/typewriter/typewriter_3.jpg',
+            'images/typewriter/typewriter_4.jpg',
+            'images/typewriter/typewriter_5.jpg',
+            'images/typewriter/typewriter_6.jpg',
+            'images/typewriter/typewriter_7.jpg',
+            'images/typewriter/typewriter_8.jpg',
+            'images/typewriter/typewriter_9.jpeg',
+            'images/typewriter/typewriter_10.png',
+            'images/typewriter/typewriter_11.jpg',
+            'images/typewriter/typewriter_12.png',
+            'images/typewriter/typewriter_13.jpg',
+            'images/typewriter/typewriter_14.jpg',
+            'images/typewriter/typewriter_15.jpg',
+            'images/typewriter/typewriter_16.png',
+            'images/typewriter/typewriter_17.jpg',
+            'images/typewriter/typewriter_18.jpg',
+            'images/typewriter/typewriter_19.jpg',
+            'images/typewriter/typewriter_20.jpg',
+            'images/typewriter/typewriter_21.jpg',
+            'images/typewriter/typewriter_22.jpg',
+            'images/typewriter/typewriter_23.jpg',
+            'images/typewriter/typewriter_24.jpg',
+            'images/typewriter/typewriter_25.jpg',
+            'images/typewriter/typewriter_26.jpg',
+            'images/typewriter/typewriter_27.jpeg',
+            'images/typewriter/typewriter_28.jpg',
+            'images/typewriter/typewriter_29.jpg',
+            'images/typewriter/typewriter_30.jpg',
+            'images/typewriter/typewriter_31.png',
+            'images/typewriter/typewriter_32.jpg'          
+        ]
     },
     'FAX_MACHINE': {
         description: 'Fax machines transmitted scanned documents over telephone networks.',
         details: 'Peak use: 1980s-1990s',
-        searchTerm: 'fax machine'
+        images: [
+            'images/fax_machine/fax_machine_1.jpg',
+            'images/fax_machine/fax_machine_2.png',
+            'images/fax_machine/fax_machine_3.jpg',
+            'images/fax_machine/fax_machine_4.jpg',
+            'images/fax_machine/fax_machine_5.jpg',
+            'images/fax_machine/fax_machine_6.jpeg',
+            'images/fax_machine/fax_machine_7.jpg',
+            'images/fax_machine/fax_machine_8.jpg',
+            'images/fax_machine/fax_machine_9.jpeg',
+            'images/fax_machine/fax_machine_10.jpg',
+            'images/fax_machine/fax_machine_11.jpg',
+            'images/fax_machine/fax_machine_12.png',
+            'images/fax_machine/fax_machine_13.jpg',
+            'images/fax_machine/fax_machine_14.jpg',
+            'images/fax_machine/fax_machine_15.jpg',
+            'images/fax_machine/fax_machine_16.png',
+            'images/fax_machine/fax_machine_17.png',
+            'images/fax_machine/fax_machine_18.jpg',
+            'images/fax_machine/fax_machine_19.jpg',
+            'images/fax_machine/fax_machine_20.jpg',
+            'images/fax_machine/fax_machine_21.jpg',
+            'images/fax_machine/fax_machine_22.jpg',
+            'images/fax_machine/fax_machine_23.jpg',
+            'images/fax_machine/fax_machine_24.jpg'
+        ]
     },
     'BETAMAX': {
         description: 'Betamax was a videotape format that competed with VHS.',
         details: 'Introduced: 1975',
-        searchTerm: 'Betamax'
+        images: [
+            'images/betamax/betamax_1.jpg',
+            'images/betamax/betamax_2.jpg',
+            'images/betamax/betamax_3.jpg',
+            'images/betamax/betamax_4.jpeg',
+            'images/betamax/betamax_5.jpg',
+            'images/betamax/betamax_6.jpg',
+            'images/betamax/betamax_7.png',
+            'images/betamax/betamax_8.jpeg',
+            'images/betamax/betamax_9.jpg',
+            'images/betamax/betamax_10.jpg',
+            'images/betamax/betamax_11.jpg',
+            'images/betamax/betamax_12.jpeg',
+            'images/betamax/betamax_13.jpeg',
+            'images/betamax/betamax_14.jpeg',
+            'images/betamax/betamax_15.jpeg',
+            'images/betamax/betamax_16.jpg',
+            'images/betamax/betamax_17.jpg',
+            'images/betamax/betamax_18.jpg',
+            'images/betamax/betamax_19.jpg',
+            'images/betamax/betamax_20.jpeg',
+            'images/betamax/betamax_21.jpg'
+        ]
     },
     'LASERDISC': {
         description: 'LaserDisc was an early optical disc format for movies.',
         details: 'Period: late 1970s-2000s',
-        searchTerm: 'LaserDisc'
+        images: [
+            'images/laserdisc/laserdisc_1.jpg',
+            'images/laserdisc/laserdisc_2.jpg',
+            'images/laserdisc/laserdisc_3.jpg',
+            'images/laserdisc/laserdisc_4.jpg',
+            'images/laserdisc/laserdisc_5.jpeg',
+            'images/laserdisc/laserdisc_6.jpeg',
+            'images/laserdisc/laserdisc_7.jpg',
+            'images/laserdisc/laserdisc_8.jpg',
+            'images/laserdisc/laserdisc_9.jpeg',
+            'images/laserdisc/laserdisc_10.jpg',
+            'images/laserdisc/laserdisc_11.jpeg',
+            'images/laserdisc/laserdisc_12.jpg',
+            'images/laserdisc/laserdisc_13.jpg',
+            'images/laserdisc/laserdisc_14.jpg',
+            'images/laserdisc/laserdisc_15.jpg',
+            'images/laserdisc/laserdisc_16.jpg',
+            'images/laserdisc/laserdisc_17.jpg',
+            'images/laserdisc/laserdisc_18.jpg',
+            'images/laserdisc/laserdisc_19.jpg',
+            'images/laserdisc/laserdisc_20.jpg',
+            'images/laserdisc/laserdisc_21.png',
+            'images/laserdisc/laserdisc_22.jpg',
+            'images/laserdisc/laserdisc_23.jpg'
+        ]
     }
 };
 
@@ -346,36 +760,21 @@ if (searchInput) {
     });
 }
 
-// ===== IMAGE API: Wikimedia Commons =====
-async function fetchImagesFromWikimedia(query, limit = 12) {
-    const api = 'https://commons.wikimedia.org/w/api.php' +
-        `?action=query&generator=search&gsrsearch=${encodeURIComponent(query)}` +
-        `&gsrnamespace=6&gsrlimit=${Math.min(limit * 2, 50)}` +
-        `&prop=imageinfo&iiprop=url&iiurlwidth=300&format=json&origin=*`;
-    try {
-        const res = await fetch(api);
-        if (!res.ok) throw new Error('Wikimedia fetch failed');
-        const json = await res.json();
-        if (!json.query || !json.query.pages) return [];
-        const pages = Object.values(json.query.pages);
-        const urls = pages.map(p => {
-            const ii = p.imageinfo && p.imageinfo[0];
-            return (ii && (ii.thumburl || ii.url)) || null;
-        }).filter(Boolean);
-        return urls.slice(0, limit);
-    } catch (err) {
-        console.error('Wikimedia error:', err);
-        return [];
-    }
+// ===== IMAGE SEARCH: Local Database =====
+function getRandomImages(images, count = 12) {
+    const shuffled = [...images].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
 }
 
 // ===== SEARCH & RESULTS =====
-async function performSearch(query) {
+function performSearch(query) {
     if (!query) return;
-    const normalized = query.toUpperCase();
+
+    const normalized = query.trim().toUpperCase();
+
     if (!searchData[normalized]) {
         showError('Sorry we cannot find relative information in our database.');
-        if (searchInput) searchInput.value = ''; // clear on error
+        if (searchInput) searchInput.value = '';
         return;
     }
 
@@ -396,17 +795,22 @@ async function performSearch(query) {
     viewArchive.classList.remove('active');
     viewResults.classList.add('active');
 
-    if (searchInput) searchInput.value = ''; // clear after successful search
+    if (searchInput) searchInput.value = '';
 
-    const apiQuery = data.searchTerm || normalized;
-    const apiImages = await fetchImagesFromWikimedia(apiQuery, 12);
+    // 🔑 LOCAL IMAGE LOOKUP (no API)
+    const imagesForTag = data.images || [];
 
-    if (apiImages && apiImages.length > 0) {
-        displayImages(apiImages);
+    const selectedImages = getRandomImages(imagesForTag, 12);
+
+    if (selectedImages.length > 0) {
+        displayImages(selectedImages);
     } else {
-        if (imagesGrid) imagesGrid.innerHTML = '<p class="loading-text">No memories available</p>';
+        if (imagesGrid) {
+            imagesGrid.innerHTML = '<p class="loading-text">No memories available</p>';
+        }
     }
 }
+
 
 function displayImages(imageUrls) {
     const imagesGrid = document.getElementById('images-grid');

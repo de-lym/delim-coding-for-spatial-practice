@@ -1,0 +1,14 @@
+{
+  "vhs": [
+    "images/vhs/vhs_01.jpg",
+    "images/vhs/vhs_02.jpg",
+    "images/vhs/vhs_03.jpg"
+  ],
+  "floppy": [
+    "images/floppy/floppy_01.jpg",
+    "images/floppy/floppy_02.jpg"
+  ],
+  "modem": [
+    "images/modem/modem_01.jpg"
+  ]
+}

@@ -538,7 +538,7 @@ body {
 .archive-item-header h4 {
     margin: 0;
     font-size: 14px;
-    color: #7b5eff;
+    color: rgb(0, 255, 140);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
